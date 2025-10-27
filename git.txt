@@ -1,0 +1,9 @@
+Git commands:
+
+git init
+
+git remote add origin git@github.com:ehenderson828/xml-jquery-final.git
+
+git branch -M main
+
+git push -u origin main
