@@ -1,5 +1,14 @@
+html,body { /* Normalizes & removes defauly margins*/
+    margin:0;
+    padding:0;
+}
+
+
 /* Background Color */
-body {background-color: #fff8e1;
+body {
+    background:linear-gradient(#fff8e1 99%, #000);
+    
+  
 }
 
 /* Main Content Box */
@@ -9,10 +18,20 @@ overflow: hidden;
 min-height: 100vh;
 min-width: 100vw;
 
+max-width: 100vw;
+
 }
 
 .main-container{
 overflow: hidden;
+position: absolute;
+
+max-height: 100vh;
+max-width: 100vw;
+
+min-height: fit-content;
+min-width: fit-content;
+
 
 }
 
@@ -115,6 +134,36 @@ fill: #534741
 #footer {
     padding-top:5rem;
     position: relative;
+    bottom: 0;
+    background-color: transparent;
+    width: 100vw;
+
+}
+
+#returnTop{
+   /* display: block !important;  Gives priority over all other display: types. */
+    display: none;
+    cursor: pointer;
+
+    margin: 0 auto;
+    width: 5rem;
+    height: 6rem;
+
+    padding: 0 0 2rem 0;
+    color: #000;
+    text-align: center;
+    font-size: 1rem;
+
+    position: relative;
+    top: 5rem;
+    z-index: 9999;
+
+    background-color: transparent;
+}
+
+.return .icon{
+   width:1.1rem;
+   fill: #000;
 
 }
 
@@ -123,11 +172,11 @@ fill: #534741
     max-width: 100vw;
     height: auto;
 
-    position: absolute;
+    position: relative;
 
     z-index: -1;
 
-    bottom:0vh;
+    bottom:0;
     left: 0vw;
 
 }
@@ -135,14 +184,14 @@ fill: #534741
 .footer-credits{
     color: #fff8e1;
 
-    font-size: 1rem;
+    font-size: .65rem;
     font-weight: bold;
     /*font-style: italic;*/
 
     position: absolute;
     top: 50%;
     left: 50%;
-    bottom: 2rem;
+    bottom: 1rem;
         
     transform: translate(-50%, 95%);
     

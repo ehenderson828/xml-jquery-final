@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Eriník's Portfolio</title>
         
         <!--link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>/-->
         <link rel="stylesheet" href="/styles/collect.css">
-            <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+            <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>            
+
+            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
             
-            <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/jquery.validate.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/jquery.validation/1.19.5/additional-methods.min.js"></script>
         
-            <title>Eriník's Portfolio</title>
+            
 </head>
             
 <body>
@@ -60,88 +62,94 @@
                
 
 
-                <div id="project-contain-1">
+                <div class="project-contain 1" id="project-contain-1">
                     <div class="project-rectangle left">
                         
-                        <img src="/assets/images/placeholder" id="project-1" class="project-pic"/>
-                        
+                        <a href="index.html"><img src="/assets/images/placeholder-site-0.png" id="project-1" class="project-pic"/></a>
+                    
+                    </div>    
+
                         <span class="project-bottom-bar">
                             <span class="project-title">Project 1</span>
                             <span class="project-description">A brief description of the site</span><br>
-                            <span class="project-author">Site Creator</span>
+                            <span class="project-author">Meeee</span>
                         </span>
                         
-                    </div>
                 </div>
 
-                <div id="project-contain-2">
+                <div class="project-contain 2" id="project-contain-2">
                     <div class="project-rectangle right">
                         
-                        <img src="/assets/images/placeholder" id="project-2" class="project-pic"/>
-                        
+                        <a href="https://nissertation.com/"><img src="/assets/images/placeholder-site-1.png" id="project-2" class="project-pic"/></a>
+                    
+                    </div>
+
                         <span class="project-bottom-bar">
                             <span class="project-title">Project 2</span>
-                            <span class="project-description">A brief description of the site</span><br>
+                            <span class="project-description">Brief two-line summary of the site goes here. <br> I am describing the site. </span><br>
                             <span class="project-author">Site Creator</span>
                         </span>
-                        
-                    </div>
+                    
                 </div>
 
-                <div id="project-contain-3">
+                <div class="project-contain 3" id="project-contain-3">
                     <div class="project-rectangle left">
                         
-                        <img src="/assets/images/placeholder" id="project-3" class="project-pic"/>
-                        
+                        <img src="/assets/images/placeholder.png" id="project-3" class="project-pic"/>
+                    
+                    </div>
+
                         <span class="project-bottom-bar">
                             <span class="project-title">Project 3</span>
                             <span class="project-description">A brief description of the site</span><br>
                             <span class="project-author">Site Creator</span>
                         </span>
                         
-                    </div>
                 </div>
 
-                <div id="project-contain-4">
+                <div class="project-contain 4" id="project-contain-4">
                     <div class="project-rectangle right">
                         
-                        <img src="/assets/images/placeholder" id="project-4" class="project-pic"/>
-                        
+                        <img src="/assets/images/placeholder.png" id="project-4" class="project-pic"/>
+                    
+                    </div>
+
                         <span class="project-bottom-bar">
                             <span class="project-title">Project 4</span>
                             <span class="project-description">A brief description of the site</span><br>
                             <span class="project-author">Site Creator</span>
                         </span>
                         
-                    </div>
                 </div>
 
-                <div id="project-contain-5">
+                <div class="project-contain 5" id="project-contain-5">
                     <div class="project-rectangle left">
                         
-                        <img src="/assets/images/placeholder" id="project-5" class="project-pic"/>
-                        
+                        <img src="/assets/images/placeholder.png" id="project-5" class="project-pic"/>
+                    
+                    </div>
+
                         <span class="project-bottom-bar">
                             <span class="project-title">Project 5</span>
                             <span class="project-description">A brief description of the site</span><br>
                             <span class="project-author">Site Creator</span>
                         </span>
                         
-                    </div>
                 </div>
 
-                <div id="project-contain-6">
+                <div class="project-contain 6" id="project-contain-6">
                     <div class="project-rectangle right">
                         
-                        <img src="/assets/images/placeholder" id="project-6" class="project-pic"/>
-                        
+                        <img src="/assets/images/placeholder.png" id="project-6" class="project-pic"/>
+                    
+                    </div>
+
                         <span class="project-bottom-bar">
                             <span class="project-title">Project 6</span>
                             <span class="project-description">A brief description of the site</span><br>
                             <span class="project-author">Site Creator</span>
                         </span>
                         
-                    </div>
                 </div>
 
             </div>
@@ -149,15 +157,14 @@
 
 
 
-            <div class="return"> 
-                    <svg id="caret" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 501 157.61"><path id="caret-2" d="M249.43,40.49l145.35,117.12h105.72L292.66.47h-84.84L.5,157.61h107.87L249.43,40.49Z"/></svg>
-                    <br>Back to top<br>
-                </div>
+            
 
             <div class id="footer">
             
-                
-
+                <div class="return" id="returnTop" title="Click to go back to top"> 
+                    <svg id="caret" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 501 157.61"><path id="caret-2" d="M249.43,40.49l145.35,117.12h105.72L292.66.47h-84.84L.5,157.61h107.87L249.43,40.49Z"/></svg>
+                    <br>Back to top<br>
+                </div>
                 <div class="footer-credits">&copy; 2025 Eriník Neverendinson</div>
                 <svg id="footer-decals" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 538.06"><path id="footer-decal" d="M1920,0C1320.48,321.91,599.52,321.91,0,0H0S0,540,0,540h1920V0h0ZM112.42,405.19c-27.61,0-50-22.39-50-50s22.39-50,50-50,50,22.39,50,50-22.39,50-50,50ZM124.92,298.21c-20.71,0-37.5-16.79-37.5-37.5s16.79-37.5,37.5-37.5,37.5,16.79,37.5,37.5-16.79,37.5-37.5,37.5ZM137.42,216.22c-13.81,0-25-11.19-25-25s11.19-25,25-25,25,11.19,25,25-11.19,25-25,25Z"/></svg>
                 
@@ -167,6 +174,7 @@
 
 
 </div>
+<script src="/scripts/main.js"></script>
 </body>
 
 </html>
