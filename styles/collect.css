@@ -1,8 +1,6 @@
 /*Main Bones of Website*/
     @import url("/styles/main-design.css");
     @import url("/styles/main-layout.css");
-
-
 /*Individual Pages*/
     /*PORTFOLIO*/
     @import url("/styles/portfolio-style.css");
