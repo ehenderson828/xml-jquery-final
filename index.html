@@ -1,180 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eriník's Portfolio</title>
-        
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>/-->
-        <link rel="stylesheet" href="/styles/collect.css">
-            <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>            
-
-            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-
-            
-        
-
-</head>
-            
-<body>
-<div class="page-content">
-                
-                <div id="banner">
-                    <h1 class="logo">
+        <!-- External stylesheet -->
+        <link rel="stylesheet" href="styles/collect.css">
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>            
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+        <title>Eriník's Portfolio</title>
+    </head>
+    <body>
+        <!-- Page container start -->
+        <div class="page-content">
+            <!-- Banner content start -->
+            <div id="banner">
+                <h1 class="logo">
                     <svg id="erinik_logo" data-name="erinik logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 173.88" alt="Eriník logo">
-                                    <path id="k" d="M392.29,0h40.37v79.96l24.87-28.86h40.99l-31.17,30.44,32.97,56.45h-37.52l-17.6-34.83-12.54,12.25v22.58h-34.04V4.33l-6.33-4.33Z"/>
-                                    <path id="_í" data-name="í" d="M347.95,49.09h33.3v86.89h-33.3V49.09ZM363.66,13.99h28.64l-26.43,24.46h-15.95l13.75-24.46Z"/>
-                                    <path id="n" d="M244.85,49.09h31.01v14.15c4.64-5.78,9.33-9.91,14.07-12.4,4.75-2.48,10.53-3.72,17.35-3.72,9.22,0,16.43,2.74,21.64,8.22,5.21,5.48,7.81,13.95,7.81,25.4v55.23h-33.46v-47.78c0-5.45-1.01-9.31-3.03-11.58-2.02-2.26-4.86-3.4-8.51-3.4-4.04,0-7.31,1.53-9.82,4.58-2.51,3.06-3.76,8.54-3.76,16.45v41.73h-33.3V49.09Z"/>
-                                    <path id="i" d="M186.39,16.04h33.3v22.66h-33.3v-22.66ZM186.39,49.09h33.3v103.04h-33.3V49.09Z"/>
-                                    <path id="r" d="M278.15,135.98h-33.3v15.7h-83.63v-15.7h0V49.09h-33.46v9.94c-2.28-3.88-4.61-6.69-6.99-8.42-3.19-2.32-7.13-3.48-11.82-3.48s-10.28,1.53-16.12,4.58l10.31,23.73c3.93-1.64,7.04-2.45,9.33-2.45,4.36,0,7.75,1.8,10.15,5.4,3.43,5.06,5.15,14.53,5.15,28.4v29.19c0,16.15-2.18,26.52,4.47,33.18,5.24,5.24,35.88,4.58,51.48,4.58l40.88-.17c15.22,0,31.26,1.24,47.49-1.32,8.15-1.29,6.07-19.83,6.07-36.27Z"/>
-                                    <path id="e" d="M100.96,99.12H34.2c.6,5.35,2.05,9.33,4.34,11.95,3.22,3.76,7.42,5.65,12.6,5.65,3.27,0,6.38-.82,9.33-2.45,1.8-1.04,3.74-2.86,5.81-5.48l32.81,3.03c-5.02,8.73-11.07,14.99-18.16,18.78-7.09,3.79-17.26,5.69-30.52,5.69-11.51,0-20.56-1.62-27.16-4.87-6.6-3.24-12.07-8.4-16.4-15.46-4.34-7.06-6.5-15.37-6.5-24.91,0-13.58,4.35-24.57,13.05-32.97,8.7-8.4,20.71-12.6,36.04-12.6,12.44,0,22.25,1.88,29.45,5.65s12.68,9.22,16.45,16.36c3.76,7.15,5.65,16.45,5.65,27.9v3.76ZM67.09,83.16c-.65-6.44-2.39-11.05-5.2-13.83-2.81-2.78-6.5-4.17-11.09-4.17-5.29,0-9.52,2.1-12.68,6.3-2.02,2.62-3.3,6.52-3.85,11.7h32.81Z"/>
-                                </svg>
-                    </h1>
-                </div>
-                <div id="nav">
-                    <ul>
-                        <li><a href="index.html" target="_self">
+                        <path id="k" d="M392.29,0h40.37v79.96l24.87-28.86h40.99l-31.17,30.44,32.97,56.45h-37.52l-17.6-34.83-12.54,12.25v22.58h-34.04V4.33l-6.33-4.33Z"/>
+                        <path id="_í" data-name="í" d="M347.95,49.09h33.3v86.89h-33.3V49.09ZM363.66,13.99h28.64l-26.43,24.46h-15.95l13.75-24.46Z"/>
+                        <path id="n" d="M244.85,49.09h31.01v14.15c4.64-5.78,9.33-9.91,14.07-12.4,4.75-2.48,10.53-3.72,17.35-3.72,9.22,0,16.43,2.74,21.64,8.22,5.21,5.48,7.81,13.95,7.81,25.4v55.23h-33.46v-47.78c0-5.45-1.01-9.31-3.03-11.58-2.02-2.26-4.86-3.4-8.51-3.4-4.04,0-7.31,1.53-9.82,4.58-2.51,3.06-3.76,8.54-3.76,16.45v41.73h-33.3V49.09Z"/>
+                        <path id="i" d="M186.39,16.04h33.3v22.66h-33.3v-22.66ZM186.39,49.09h33.3v103.04h-33.3V49.09Z"/>
+                        <path id="r" d="M278.15,135.98h-33.3v15.7h-83.63v-15.7h0V49.09h-33.46v9.94c-2.28-3.88-4.61-6.69-6.99-8.42-3.19-2.32-7.13-3.48-11.82-3.48s-10.28,1.53-16.12,4.58l10.31,23.73c3.93-1.64,7.04-2.45,9.33-2.45,4.36,0,7.75,1.8,10.15,5.4,3.43,5.06,5.15,14.53,5.15,28.4v29.19c0,16.15-2.18,26.52,4.47,33.18,5.24,5.24,35.88,4.58,51.48,4.58l40.88-.17c15.22,0,31.26,1.24,47.49-1.32,8.15-1.29,6.07-19.83,6.07-36.27Z"/>
+                        <path id="e" d="M100.96,99.12H34.2c.6,5.35,2.05,9.33,4.34,11.95,3.22,3.76,7.42,5.65,12.6,5.65,3.27,0,6.38-.82,9.33-2.45,1.8-1.04,3.74-2.86,5.81-5.48l32.81,3.03c-5.02,8.73-11.07,14.99-18.16,18.78-7.09,3.79-17.26,5.69-30.52,5.69-11.51,0-20.56-1.62-27.16-4.87-6.6-3.24-12.07-8.4-16.4-15.46-4.34-7.06-6.5-15.37-6.5-24.91,0-13.58,4.35-24.57,13.05-32.97,8.7-8.4,20.71-12.6,36.04-12.6,12.44,0,22.25,1.88,29.45,5.65s12.68,9.22,16.45,16.36c3.76,7.15,5.65,16.45,5.65,27.9v3.76ZM67.09,83.16c-.65-6.44-2.39-11.05-5.2-13.83-2.81-2.78-6.5-4.17-11.09-4.17-5.29,0-9.52,2.1-12.68,6.3-2.02,2.62-3.3,6.52-3.85,11.7h32.81Z"/>
+                    </svg>
+                </h1>
+            </div>
+            <!-- Banner content end -->
+            <!-- Navbar content start -->
+            <div id="nav">
+                <ul>
+                    <li>
+                        <a href="index.html" target="_self">
                             <!-- Inline SVG for Home Icon -->
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 398.99" alt="Home tab">
                                 <path class="cls-1" d="M291.09,398.99v-118.74h-81.64v118.74h-122.46c-3.94,0-16.63-12.94-15.94-18.69l1.13-151.97L250.27,82.24l178.09,146.09,1.13,151.97c.69,5.76-12,18.69-15.94,18.69h-122.46Z"/>
                                 <path class="cls-1" d="M350.46,69.97V6.89c0-3.98,12.37-5.97,15.96-6.3,9.29-.85,57.21-1.63,60.92,4.24,9.09,14.37-2.55,109.49,2.79,132.67,1.77,6.04,50.14,41.53,58.89,49.96,12.45,11.99,14.8,12.31,4.49,26.82-7.12,10.03-17.72,25.81-30.61,16.6L250.27,52.69,36.25,231.95c-4.25,1.97-10.73,2.52-14.8.04C19.15,230.58.02,205.2,0,202.33c-.03-4.79,9.25-12.6,12.85-16.02C76.72,125.81,156.07,73.87,220.64,13.13c48.27-41.59,88.86,38.65,129.82,56.85Z"/>
                             </svg>
-                        </a></li>
-                        <li><a href="/pages/works.html" target="_self">work</a></li>
-                        <li><a href="/pages/about.html"  target="_self">about</a></li>
-                        <li><a href="/pages/contact.html" target="_self">contact</a></li>
-                    </ul>
-                </div>      
-                
-                    <div id="info-container">
-                     <h1 class="info">welcome!<br>scroll down to see our projects<br>click any of the links to be taken to the site.<br><img class="icon" src="/assets/icons/down-caret.svg"></h1>
-                    </div>
-
-
-
-
-
-
-
+                        </a>
+                    </li>
+                    <li><a href="/pages/works.html" target="_self">work</a></li>
+                    <li><a href="/pages/about.html"  target="_self">about</a></li>
+                    <li><a href="/pages/contact.html" target="_self">contact</a></li>
+                </ul>
+            </div>
+            <!--Navbar content end  -->
+            <!-- Info container start -->
+            <div id="info-container">
+                <h1 class="info">
+                    Welcome!<br>scroll down to see our projects<br>click any of the links to be taken to the site.<br><img class="icon" src="/assets/icons/down-caret.svg">
+                </h1>
+            </div>
+            <!-- Info container end -->
+            <!-- Main container start -->
             <div class="main-container">
-                
-               
-
-
+                <!-- Project 1 start -->
                 <div class="project-contain 1" id="project-contain-1">
                     <div class="project-rectangle left">
-                        
-                        <a href="index.html"><img src="/assets/images/placeholder-site-0.png" id="project-1" class="project-pic"/></a>
-                    
+                        <a href="index.html">
+                            <img src="/assets/images/placeholder-site-0.png" id="project-1" class="project-pic"/>
+                        </a>
                     </div>    
-
-                        <span class="project-bottom-bar">
-                            <span class="project-title">Project 1</span>
-                            <span class="project-description">A brief description of the site</span><br>
-                            <span class="project-author">Meeee</span>
-                        </span>
-                        
+                    <span class="project-bottom-bar">
+                        <span class="project-title">Project 1</span>
+                        <span class="project-description">A brief description of the site</span><br>
+                        <span class="project-author">Meeee</span>
+                    </span>
                 </div>
-
+                <!-- Project 1 end -->
+                <!-- Project 2 start -->
                 <div class="project-contain 2" id="project-contain-2">
                     <div class="project-rectangle right">
-                        
-                        <a href="https://nissertation.com/"><img src="/assets/images/placeholder-site-1.png" id="project-2" class="project-pic"/></a>
-                    
+                        <a href="https://nissertation.com/">
+                            <img src="/assets/images/placeholder-site-1.png" id="project-2" class="project-pic"/>
+                        </a>
                     </div>
-
-                        <span class="project-bottom-bar">
-                            <span class="project-title">Project 2</span>
-                            <span class="project-description">Brief two-line summary of the site goes here. <br> I am describing the site. </span><br>
-                            <span class="project-author">Site Creator</span>
-                        </span>
-                    
+                    <span class="project-bottom-bar">
+                        <span class="project-title">Project 2</span>
+                        <span class="project-description">Brief two-line summary of the site goes here. <br> I am describing the site. </span><br>
+                        <span class="project-author">Site Creator</span>
+                    </span>
                 </div>
-
+                <!-- Project 2 end -->
+                <!-- Project 3 start -->
                 <div class="project-contain 3" id="project-contain-3">
                     <div class="project-rectangle left">
-                        
                         <img src="/assets/images/placeholder.png" id="project-3" class="project-pic"/>
-                    
                     </div>
-
-                        <span class="project-bottom-bar">
-                            <span class="project-title">Project 3</span>
-                            <span class="project-description">A brief description of the site</span><br>
-                            <span class="project-author">Site Creator</span>
-                        </span>
-                        
+                    <span class="project-bottom-bar">
+                        <span class="project-title">Project 3</span>
+                        <span class="project-description">A brief description of the site</span><br>
+                        <span class="project-author">Site Creator</span>
+                    </span>       
                 </div>
-
+                <!-- Project 3 end -->
+                <!-- Project 4 start -->
                 <div class="project-contain 4" id="project-contain-4">
                     <div class="project-rectangle right">
-                        
                         <img src="/assets/images/placeholder.png" id="project-4" class="project-pic"/>
-                    
                     </div>
-
-                        <span class="project-bottom-bar">
-                            <span class="project-title">Project 4</span>
-                            <span class="project-description">A brief description of the site</span><br>
-                            <span class="project-author">Site Creator</span>
-                        </span>
-                        
+                    <span class="project-bottom-bar">
+                        <span class="project-title">Project 4</span>
+                        <span class="project-description">A brief description of the site</span><br>
+                        <span class="project-author">Site Creator</span>
+                    </span>    
                 </div>
-
+                <!-- Project 4 end -->
+                <!-- Project 5 start -->
                 <div class="project-contain 5" id="project-contain-5">
                     <div class="project-rectangle left">
-                        
                         <img src="/assets/images/placeholder.png" id="project-5" class="project-pic"/>
-                    
                     </div>
-
-                        <span class="project-bottom-bar">
-                            <span class="project-title">Project 5</span>
-                            <span class="project-description">A brief description of the site</span><br>
-                            <span class="project-author">Site Creator</span>
-                        </span>
-                        
+                    <span class="project-bottom-bar">
+                        <span class="project-title">Project 5</span>
+                        <span class="project-description">A brief description of the site</span><br>
+                        <span class="project-author">Site Creator</span>
+                    </span>
                 </div>
-
+                <!-- Project 5 end -->
+                <!-- Project 6 start -->
                 <div class="project-contain 6" id="project-contain-6">
-                    <div class="project-rectangle right">
-                        
+                    <div class="project-rectangle right">  
                         <img src="/assets/images/placeholder.png" id="project-6" class="project-pic"/>
-                    
                     </div>
-
-                        <span class="project-bottom-bar">
-                            <span class="project-title">Project 6</span>
-                            <span class="project-description">A brief description of the site</span><br>
-                            <span class="project-author">Site Creator</span>
-                        </span>
-                        
+                    <span class="project-bottom-bar">
+                        <span class="project-title">Project 6</span>
+                        <span class="project-description">A brief description of the site</span><br>
+                        <span class="project-author">Site Creator</span>
+                    </span>
                 </div>
-
+                <!-- Project 6 end -->
             </div>
-
-
-
-
-            
-
-            <div class id="footer">
-            
+            <!-- Main container end -->
+            <!-- Footer content start -->
+            <div class="footer" id="footer">
                 <div class="return" id="returnTop" title="Click to go back to top"> 
                     <svg id="caret" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 501 157.61"><path id="caret-2" d="M249.43,40.49l145.35,117.12h105.72L292.66.47h-84.84L.5,157.61h107.87L249.43,40.49Z"/></svg>
                     <br>Back to top<br>
                 </div>
                 <div class="footer-credits">&copy; 2025 Eriník Neverendinson</div>
                 <svg id="footer-decals" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 538.06"><path id="footer-decal" d="M1920,0C1320.48,321.91,599.52,321.91,0,0H0S0,540,0,540h1920V0h0ZM112.42,405.19c-27.61,0-50-22.39-50-50s22.39-50,50-50,50,22.39,50,50-22.39,50-50,50ZM124.92,298.21c-20.71,0-37.5-16.79-37.5-37.5s16.79-37.5,37.5-37.5,37.5,16.79,37.5,37.5-16.79,37.5-37.5,37.5ZM137.42,216.22c-13.81,0-25-11.19-25-25s11.19-25,25-25,25,11.19,25,25-11.19,25-25,25Z"/></svg>
-                
             </div>
-
-
-
-
-</div>
-<script src="/scripts/main.js"></script>
-</body>
-
+            <!-- Footer content end -->
+        </div>
+        <!-- Page content end -->
+        <!-- External JS -->
+        <script src="/scripts/main.js"></script>
+    </body>
 </html>
