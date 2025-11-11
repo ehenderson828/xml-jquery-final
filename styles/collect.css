@@ -7,3 +7,6 @@
     @import url("about-style.css");
     /*CONTACT*/
     @import url("contact-style.css");
+    @import url("/styles/contact-style.css");
+    /*WORKS*/
+    @import url("/styles/works-style.css");
