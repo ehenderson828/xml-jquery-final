@@ -1,12 +1,12 @@
 /*Main Bones of Website*/
-    @import url("/styles/main-design.css");
-    @import url("/styles/main-layout.css");
+    @import url("main-design.css");
 /*Individual Pages*/
     /*PORTFOLIO*/
-    @import url("/styles/portfolio-style.css");
+    @import url("portfolio-style.css");
     /*ABOUT*/
-    @import url("/styles/about-style.css");
+    @import url("about-style.css");
     /*CONTACT*/
+    @import url("contact-style.css");
     @import url("/styles/contact-style.css");
     /*WORKS*/
     @import url("/styles/works-style.css");
