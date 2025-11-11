@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="xslt/ines.xsl"?>
 
 <!--
    CMT-117 & CMT-225
@@ -8,12 +9,35 @@
    Date:
 
    Filename:           inês.xml
-   Supporting Files:   inês.xsd
+   Supporting Files:   inês.xsd, ines.xsl
 -->
 
-<root-element
+<inessProjects
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="schema/inês.xsd"
 >
+  <inessProject>
+     <Title>Project Title</Title>
+	 <Description>A website description.</Description>
+     <TimeToComplete>X weeks</TimeToComplete>
+	 <DatePublished>XXXX 2025</DatePublished>
+	 <Link>https://www.example.com</Link>
+  </inessProject>
 
-</root-element>
+  <inessProject>
+     <Title>Project Title</Title>
+	 <Description>A website description.</Description>
+     <TimeToComplete>X weeks</TimeToComplete>
+	 <DatePublished>XXXX 2025</DatePublished>
+	 <Link>https://www.example.com</Link>
+  </inessProject>
+
+  <inessProject>
+     <Title>Project Title</Title>
+	 <Description>A website description.</Description>
+     <TimeToComplete>X weeks</TimeToComplete>
+	 <DatePublished>XXXX 2025</DatePublished>
+	 <Link>https://www.example.com</Link>
+  </inessProject>
+
+</inessProjects>
