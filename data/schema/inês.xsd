@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+   CMT-117 & CMT-225
+
+   XML & jQuery Final Project
+   Author: Inês Neves
+   Date: 
+
+   Filename:          inês.xsd
+   Supporting Files:  inês.xml
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+</xs:schema>

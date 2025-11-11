@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+   CMT-117 & CMT-225
+
+   XML & jQuery Final Project
+   Author: Eric Henderson
+   Date: 11/3/25 
+
+   Filename:          eric.xsd
+   Supporting Files:  eric.xml
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+</xs:schema>
