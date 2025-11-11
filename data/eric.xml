@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="xslt/eric.xsl"?>
 
 <!--
    CMT-117 & CMT-225
@@ -8,12 +9,35 @@
    Date: 
 
    Filename:           eric.xml
-   Supporting Files:   eric.xsd
+   Supporting Files:   eric.xsd, eric.xsl
 -->
 
-<root-element
+<ericsProjects
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="schema/eric.xsd"
 >
+  <ericsProject>
+     <Title>Project Title</Title>
+	 <Description>A website description.</Description>
+     <TimeToComplete>X weeks</TimeToComplete>
+	 <DatePublished>XXXX 2025</DatePublished>
+	 <Link>https://www.example.com</Link>
+  </ericsProject>
 
-</root-element>
+  <ericsProject>
+     <Title>Project Title</Title>
+	 <Description>A website description.</Description>
+     <TimeToComplete>X weeks</TimeToComplete>
+	 <DatePublished>XXXX 2025</DatePublished>
+	 <Link>https://www.example.com</Link>
+  </ericsProject>
+
+  <ericsProject>
+     <Title>Project Title</Title>
+	 <Description>A website description.</Description>
+     <TimeToComplete>X weeks</TimeToComplete>
+	 <DatePublished>XXXX 2025</DatePublished>
+	 <Link>https://www.example.com</Link>
+  </ericsProject>
+
+</ericsProjects>
