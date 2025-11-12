@@ -1,0 +1,169 @@
+<?php
+// Prevent direct access
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: ../pages/contact.html');
+    exit;
+}
+
+// Load Composer's autoloader
+require_once __DIR__ . '/../vendor/autoload.php';
+
+// Load email configuration
+$configFile = __DIR__ . '/email-config.php';
+if (!file_exists($configFile)) {
+    die('Error: email-config.php not found. Please copy email-config.example.php to email-config.php and configure it.');
+}
+$config = require $configFile;
+
+// Import PHPMailer classes
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Get form data and sanitize
+$author = isset($_POST['author']) ? trim($_POST['author']) : '';
+$fullName = isset($_POST['full_name']) ? trim($_POST['full_name']) : '';
+$phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+$email = isset($_POST['email']) ? trim($_POST['email']) : '';
+$message = isset($_POST['message']) ? trim($_POST['message']) : '';
+
+// Validate required fields
+$errors = [];
+
+if (empty($author) || !isset($config['author_emails'][$author])) {
+    $errors[] = 'Invalid author selection';
+}
+
+if (empty($fullName)) {
+    $errors[] = 'Full name is required';
+}
+
+if (empty($email)) {
+    $errors[] = 'Email is required';
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'Invalid email format';
+}
+
+if (empty($message)) {
+    $errors[] = 'Message is required';
+}
+
+// If there are errors, redirect back with error message
+if (!empty($errors)) {
+    $errorMessage = urlencode(implode(', ', $errors));
+    header("Location: ../pages/contact.html?error=$errorMessage");
+    exit;
+}
+
+// Prepare email details
+$toEmail = $config['author_emails'][$author];
+$authorName = ucfirst($author);
+$subject = "New Contact Form Submission for $authorName";
+
+// Create email body (HTML version)
+$emailBodyHTML = "
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #534741; color: #fff8e1; padding: 20px; text-align: center; }
+        .content { background-color: #fff; padding: 20px; border: 2px solid #c7b299; }
+        .field { margin-bottom: 15px; }
+        .label { font-weight: bold; color: #534741; }
+        .footer { margin-top: 20px; padding: 10px; text-align: center; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h2>New Contact Form Submission</h2>
+        </div>
+        <div class='content'>
+            <p>Hello $authorName,</p>
+            <p>You have received a new contact form submission.</p>
+
+            <div class='field'>
+                <span class='label'>Name:</span><br>
+                $fullName
+            </div>
+
+            <div class='field'>
+                <span class='label'>Email:</span><br>
+                <a href='mailto:$email'>$email</a>
+            </div>
+
+            <div class='field'>
+                <span class='label'>Phone:</span><br>
+                $phone
+            </div>
+
+            <div class='field'>
+                <span class='label'>Message:</span><br>
+                " . nl2br(htmlspecialchars($message)) . "
+            </div>
+        </div>
+        <div class='footer'>
+            This message was sent from the Eriník contact form.
+        </div>
+    </div>
+</body>
+</html>
+";
+
+// Create plain text version
+$emailBodyText = "New Contact Form Submission for $authorName\n\n";
+$emailBodyText .= "Details:\n";
+$emailBodyText .= "--------\n";
+$emailBodyText .= "Name: $fullName\n";
+$emailBodyText .= "Email: $email\n";
+$emailBodyText .= "Phone: $phone\n";
+$emailBodyText .= "Message:\n$message\n";
+$emailBodyText .= "--------\n\n";
+$emailBodyText .= "This message was sent from the Eriník contact form.";
+
+// Create PHPMailer instance
+$mail = new PHPMailer(true);
+
+try {
+    // Server settings
+    if ($config['settings']['debug']) {
+        $mail->SMTPDebug = 2; // Enable verbose debug output
+    }
+
+    $mail->isSMTP();
+    $mail->Host       = $config['smtp']['host'];
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $config['smtp']['username'];
+    $mail->Password   = $config['smtp']['password'];
+    $mail->SMTPSecure = $config['smtp']['encryption'];
+    $mail->Port       = $config['smtp']['port'];
+    $mail->CharSet    = $config['settings']['charset'];
+
+    // Recipients
+    $mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
+    $mail->addAddress($toEmail, $authorName);
+    $mail->addReplyTo($email, $fullName);
+
+    // Content
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body    = $emailBodyHTML;
+    $mail->AltBody = $emailBodyText;
+
+    // Send email
+    $mail->send();
+
+    // Success - redirect back with success message
+    header('Location: ../pages/contact.html?success=1');
+
+} catch (Exception $e) {
+    // Failed - redirect back with error
+    $errorMsg = $config['settings']['debug']
+        ? "Failed to send email: {$mail->ErrorInfo}"
+        : 'Failed to send email. Please try again later.';
+
+    header('Location: ../pages/contact.html?error=' . urlencode($errorMsg));
+}
+
+exit;
+?>
