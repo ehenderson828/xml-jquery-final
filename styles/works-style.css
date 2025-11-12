@@ -1,0 +1,40 @@
+.work-contain{
+
+    
+
+    position: relative;
+
+    width: 15rem;
+
+    text-align: center;
+
+    margin: 0 auto;
+
+    padding: 0 5vw ;
+
+    overflow: hidden;
+
+}
+
+.works{
+    position: relative;
+    padding: 0 5vh;
+    background-color: #c7b29944;
+      
+}
+
+.work-contain a {
+
+        color: #534741;
+        text-decoration: none;
+        font-weight: 800;
+        
+        transition: color 3s ease-in-out;
+}
+
+.work-contain a:hover{
+        color: #6c0a0a;
+        text-decoration: none;
+        transition: color .3s ease-in-out;
+
+}

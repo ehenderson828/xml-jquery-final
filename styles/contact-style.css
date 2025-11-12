@@ -1,0 +1,244 @@
+/* Contact Page Specific Styles */
+#info-container {
+    text-align: center;
+    padding: 3rem 2rem 2rem 2rem;
+    margin: 0 auto;
+}
+
+#info-container .contact-info {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 3rem;
+    font-weight: 750;
+    line-height: 2rem;
+    color: #000;
+    margin: 0 auto;
+    max-width: 50rem;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-bottom: 4rem;
+}
+
+.author-selection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+.eric-contact, .inês-contact, .níko-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-icon {
+    width: 100px;
+    height: 100px;
+    border: solid #000 1px;
+    border-radius: 100%;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75em;
+}
+
+/* Form Styling */
+#contact_form, .author-selection {
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fieldset */
+#fieldset_container {
+    border: 2px solid #c7b299;
+    border-radius: 6px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background-color: #fff8e1;
+}
+
+#legend {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+    padding: 0 1rem;
+}
+
+/* Form Labels */
+label {
+    display: block;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    border: 2px solid #c7b299;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #534741;
+    box-shadow: 0 0 0 3px rgba(199, 178, 153, 0.3);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+    font-family: Arial, sans-serif;
+}
+
+input[type="submit"] {
+    background-color: #000;
+    color: #fff8e1;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #534741;
+    transform: translateY(-2px);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+#reset {
+    background-color: #c7b299;
+    color: #000;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.85rem 2rem;
+    border: 2px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 0.75rem;
+    width: 100%;
+}
+
+#reset:hover {
+    background-color: #534741;
+    color: #fff8e1;
+}
+
+.error {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-style: italic;
+}
+
+input.error,
+textarea.error {
+    border-color: #d32f2f;
+}
+
+input.valid,
+textarea.valid {
+    border-color: #4caf50;
+}
+
+/* Media Query */
+@media (max-width: 768px) {
+    #contact_form {
+        padding: 1.5rem;
+    }
+
+    #fieldset_container {
+        padding: 1.5rem;
+    }
+
+    #legend {
+        font-size: 1.1rem;
+    }
+
+    #info-container .info {
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+    }
+
+    label {
+        font-size: 0.95rem;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea {
+        font-size: 0.95rem;
+        padding: 0.65rem;
+    }
+
+    input[type="submit"],
+    #reset {
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 1rem;
+    }
+
+    #contact_form {
+        padding: 1rem;
+    }
+
+    #fieldset_container {
+        padding: 1rem;
+    }
+
+    #legend {
+        font-size: 1rem;
+    }
+
+    #info-container .info {
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+}

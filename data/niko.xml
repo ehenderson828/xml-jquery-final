@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--?xml-stylesheet type="text/css" href="/styles/xmlstyles.css"?-->
+<?xml-stylesheet type="text/xsl" href="xslt/niko.xsl"?>
+<!--
+   CMT-117 & CMT-225
+
+   XML & jQuery Final Project
+   Author: Níko Ferdinand
+   Date:
+
+   Filename:           niko.xml
+   Supporting Files:   niko.xsd, niko.xsl
+-->
+<nikosProjects
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="schema/niko.xsd"
+>
+
+  <nikosProject>
+     <Title>Persuasio</Title>
+	 <Description>A website showcasing how to gain confidence and talk to people.</Description>
+     <TimeToComplete>3 weeks</TimeToComplete>
+	 <DatePublished>April 2024</DatePublished>
+	 <Link>https://www.nissertation.com</Link>
+  </nikosProject>
+
+  <nikosProject>
+     <Title>Pee</Title>
+	 <Description>A. Spacebuns.</Description>
+     <TimeToComplete>8 days</TimeToComplete>
+	 <DatePublished>May 2025</DatePublished>
+	 <Link>https://wwww.pee</Link>
+  </nikosProject>
+  
+  <nikosProject>
+     <Title>New England Birds</Title>
+	 <Description>A website showcasing information about New England states, including state birds, flowers, and leadership.</Description>
+     <TimeToComplete>2 weeks</TimeToComplete>
+	 <DatePublished>February 2025</DatePublished>
+	 <Link>https://www.newenglandbirdies.com</Link>
+  </nikosProject>
+  
+  <nikosProject>
+     <Title>Stoic Quotes</Title>
+	 <Description>A look into the minds of famous Stoic and Epicurean philosophers.</Description>
+     <TimeToComplete>4 days</TimeToComplete>
+	 <DatePublished>January 2025</DatePublished>
+	 <Link>https://www.Wstoicism.ca</Link>
+  </nikosProject>
+
+
+</nikosProjects>

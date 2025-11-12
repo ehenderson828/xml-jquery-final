@@ -43,7 +43,8 @@
     }
 /* Main Project Rectangles */
 .project-contain{
-
+    display: flex;
+    flex-direction: column;
     max-width: fit-content;
     background-color: transparent;
     flex: 1;
