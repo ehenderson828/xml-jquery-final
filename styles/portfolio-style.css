@@ -1,10 +1,12 @@
 /* Supposedly stacks items in a single column on small screens */
-
+/*
 @media (max-width: 960px) {
     .main-container {
         grid-template-columns: 1fr; 
     }
 }
+    */
+
 #info-container{
     padding: 1rem 0;
     width: fit-content;
@@ -35,7 +37,10 @@
     width: max-content;
     
 }
-
+@media (max-width: 960px) {
+    .main-container {
+        grid-template-columns: 1fr; 
+    }
 /* Main Project Rectangles */
 .project-contain{
     display: flex;
