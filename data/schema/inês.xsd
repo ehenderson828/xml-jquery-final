@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!--
    CMT-117 & CMT-225
@@ -12,5 +12,23 @@
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="inessProjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="inessProject" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Title" type="xs:string"/>
+              <xs:element name="Description" type="xs:string"/>
+              <xs:element name="TimeToComplete" type="xs:string"/>
+              <xs:element name="DatePublished" type="xs:string"/>
+              <xs:element name="Link" type="xs:anyURI"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 
 </xs:schema>
