@@ -4,7 +4,6 @@ composer.lock
 
 # Email configuration (contains sensitive SMTP credentials)
 scripts/email-config.php
-scripts/email-config.example.php
 
 # System files
 .DS_Store
