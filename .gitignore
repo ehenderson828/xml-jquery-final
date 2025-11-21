@@ -1,0 +1,10 @@
+# Composer dependencies
+/vendor/
+composer.lock
+
+# Email configuration (contains sensitive SMTP credentials)
+scripts/email-config.php
+
+# System files
+.DS_Store
+Thumbs.db

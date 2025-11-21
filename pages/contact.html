@@ -61,8 +61,8 @@
             <!-- Contact container start -->
             <div class="contact-container">
                 <div class="author-selection">
-                    <div class="eric-contact">
-                        <div class="eric-circle circle-icon"></div>
+                    <div class="eric-contact" data-filter="eric">
+                        <div class="eric-circle circle-icon">Eric's Avatar</div>
                         <h1>Eric</h1>
                         <div class="icon-container">
                             <svg id="email_icon" class="icon" data-name="email icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 329.12">
@@ -105,8 +105,8 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="inês-contact">
-                        <div class="inês-circle circle-icon"></div>
+                    <div class="inês-contact" data-filter="inês">
+                        <div class="inês-circle circle-icon">Inês' Avatar</div>
                         <h1>Inês</h1>
                         <div class="icon-container">
                             <svg id="email_icon" class="icon" data-name="email icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 329.12">
@@ -149,8 +149,8 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="níko-contact">
-                        <div class="níko-circle circle-icon"></div>
+                    <div class="níko-contact" data-filter="níko">
+                        <div class="níko-circle circle-icon">Níko's Avatar</div>
                         <h1>Níko</h1>
                         <div class="icon-container">
                             <svg id="email_icon" class="icon" data-name="email icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 329.12">
@@ -194,52 +194,76 @@
                         </div>
                     </div>
                 </div>
-                <form 
-                    action="" 
-                    method=""
-                    name="contact_form" 
-                    id="contact_form"
-                >
-                    <fieldset id="fieldset_container">
-                        <legend id="legend">Submit Contact Info Below ⬇</legend>
-                        <br>
-                        <label for="name">Full Name:</label>
-                        <input 
-                            type="text" 
-                            name="first_name" 
-                            id="name"
+                <!-- Modal Backdrop -->
+                <div id="modal-backdrop" class="modal-backdrop">
+                    <!-- Modal Container -->
+                    <div id="modal-container" class="modal-container">
+                        <!-- Close Button -->
+                        <button type="button" id="modal-close" class="modal-close">&times;</button>
+                        <!-- Contact Form -->
+                        <form
+                            action="../scripts/send-email.php"
+                            method="POST"
+                            name="contact_form"
+                            id="contact_form"
                         >
-                        <br>
-                        <label for="phone">Phone Number:</label>
-                        <input 
-                            type="tel" 
-                            name="phone"
-                            id="phone" 
-                            placeholder="(999) 999-9999"
-                        >
-                        <br>
-                        <label for="email">Email Address:</label>
-                        <input 
-                            type="email" 
-                            name="email" 
-                            id="email"
-                        >
-                        <br>
-                        <label for="message">Message:</label>
-                        <textarea name="message" id="message" placeholder="Enter your message here..."></textarea>
-                    </fieldset>	
-                    <br>
-                    <input 
-                        type="submit" 
-                        id="submit" 
-                        value="Submit Request"
-                    >
-                    <br>
-                    <button type="button" id="reset">
-                        Reset Form
-                    </button>
-                    <br>
-                </form>
+                            <!-- Hidden field to track selected author -->
+                            <input type="hidden" name="author" id="author" value="">
+
+                            <fieldset id="fieldset_container">
+                                <legend id="legend">Submit Contact Info Below ⬇</legend>
+                                <br>
+                                <label for="name">Full Name: <span style="color: #d32f2f;">*</span></label>
+                                <input
+                                    type="text"
+                                    name="full_name"
+                                    id="name"
+                                    required
+                                    minlength="2"
+                                    maxlength="100"
+                                >
+                                <br>
+                                <label for="phone">Phone Number: <span style="color: #d32f2f;">*</span></label>
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    id="phone"
+                                    placeholder="(999) 999-9999"
+                                    required
+                                >
+                                <br>
+                                <label for="email">Email Address: <span style="color: #d32f2f;">*</span></label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    required
+                                >
+                                <br>
+                                <label for="message">Message: <span style="color: #d32f2f;">*</span></label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    placeholder="Enter your message here..."
+                                    required
+                                    minlength="10"
+                                    maxlength="1000"
+                                ></textarea>
+                            </fieldset>
+                            <br>
+                            <input
+                                type="submit"
+                                id="submit"
+                                value="Submit Request"
+                            >
+                            <br>
+                            <button type="button" id="reset">
+                                Reset Form
+                            </button>
+                            <br>
+                        </form>
+                    </div>
+                </div>
             </div>
             <!-- Contact container end -->
             <!-- Footer content start -->

@@ -1,0 +1,7 @@
+{
+    "name": "erinik/contact-form",
+    "description": "Contact form with PHPMailer integration",
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
