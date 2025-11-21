@@ -12,10 +12,10 @@
    Supporting Files:   niko.xsd, niko.xsl
 -->
 <nikosProjects
+
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="schema/niko.xsd"
 >
-
   <nikosProject>
      <Title>Persuasio</Title>
 	 <Description>A website showcasing how to gain confidence and talk to people.</Description>
@@ -26,7 +26,7 @@
 
   <nikosProject>
      <Title>Pee</Title>
-	 <Description>A. Spacebuns.</Description>
+	 <Description>A website</Description>
      <TimeToComplete>8 days</TimeToComplete>
 	 <DatePublished>May 2025</DatePublished>
 	 <Link>https://wwww.pee</Link>

@@ -1,4 +1,52 @@
 /* Contact Page Specific Styles */
+
+/* Alert Messages */
+.alert-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    z-index: 10000;
+    display: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: 90%;
+    text-align: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.alert-success {
+    background-color: #4caf50;
+    color: #fff;
+    border: 2px solid #45a049;
+}
+
+.alert-error {
+    background-color: #d32f2f;
+    color: #fff;
+    border: 2px solid #b71c1c;
+}
+
+.alert-message:hover {
+    opacity: 0.9;
+}
+
 #info-container {
     text-align: center;
     padding: 3rem 2rem 2rem 2rem;
@@ -28,6 +76,7 @@
     justify-content: center;
     align-items: center;
     gap: 3em;
+    background: linear-gradient(#fff8e1 99%, #000);
 }
 
 .eric-contact, .inês-contact, .níko-contact {
@@ -35,13 +84,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .circle-icon {
     width: 100px;
     height: 100px;
-    border: solid #000 1px;
+    border: dashed #000 1px;
     border-radius: 100%;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-container {
@@ -165,22 +219,47 @@ input[type="submit"]:active {
     color: #fff8e1;
 }
 
-.error {
+/* Validation error messages */
+span.error {
     color: #d32f2f;
     font-size: 0.875rem;
     margin-top: 0.25rem;
     display: block;
     font-style: italic;
+    font-weight: normal;
+    animation: errorFadeIn 0.3s ease-in;
 }
 
+@keyframes errorFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Invalid input fields */
 input.error,
 textarea.error {
-    border-color: #d32f2f;
+    border-color: #d32f2f !important;
+    background-color: #fff5f5;
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
 }
 
+/* Valid input fields */
 input.valid,
 textarea.valid {
-    border-color: #4caf50;
+    border-color: #4caf50 !important;
+    background-color: #f1f8f4;
+}
+
+/* Clear validation styles on focus */
+input:focus.error,
+textarea:focus.error {
+    background-color: #fff;
 }
 
 /* Media Query */
@@ -241,4 +320,77 @@ textarea.valid {
         font-size: 1rem;
         line-height: 1.6rem;
     }
+}
+
+/* Modal Styles */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.modal-container {
+    position: relative;
+    max-width: 700px;
+    width: 85%;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background-color: #534741;
+    transform: rotate(90deg);
+}
+
+.modal-close:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* Adjust form styling inside modal */
+.modal-container #contact_form {
+    border: none;
+    box-shadow: none;
 }
