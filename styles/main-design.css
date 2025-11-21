@@ -150,7 +150,7 @@ fill: #534741
 
     position: relative;
     top: 5rem;
-    z-index: 9999;
+    z-index: 9;
 
     background-color: transparent;
 }

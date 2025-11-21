@@ -5,8 +5,7 @@
    CMT-117 & CMT-225
 
    XML & jQuery Final Project
-   Author: Níko Ferdinand
-   Date:
+   Date: December 8, 2025
 
    Filename:           niko.xml
    Supporting Files:   niko.xsd, niko.xsl
@@ -25,11 +24,11 @@
   </nikosProject>
 
   <nikosProject>
-     <Title>Pee</Title>
-	 <Description>A website</Description>
-     <TimeToComplete>8 days</TimeToComplete>
+     <Title>Web Development Program Pathway</Title>
+	 <Description>A website teaching students of a particular college how to best achieve their goal of gaining an Associate's in Web Development.</Description>
+     <TimeToComplete>18 days</TimeToComplete>
 	 <DatePublished>May 2025</DatePublished>
-	 <Link>https://wwww.pee</Link>
+	 <Link>https://www.webdevpathway.io</Link>
   </nikosProject>
   
   <nikosProject>
@@ -45,7 +44,7 @@
 	 <Description>A look into the minds of famous Stoic and Epicurean philosophers.</Description>
      <TimeToComplete>4 days</TimeToComplete>
 	 <DatePublished>January 2025</DatePublished>
-	 <Link>https://www.Wstoicism.ca</Link>
+	 <Link>https://www.stoicquotes.ph</Link>
   </nikosProject>
 
 
