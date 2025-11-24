@@ -98,6 +98,19 @@
     justify-content: center;
 }
 
+/* Individual author circles */
+.eric-circle {
+    /* Inherits from .circle-icon */
+}
+
+.inês-circle {
+    /* Inherits from .circle-icon */
+}
+
+.níko-circle {
+    /* Inherits from .circle-icon */
+}
+
 .icon-container {
     display: flex;
     align-items: center;

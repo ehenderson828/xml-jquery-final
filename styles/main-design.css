@@ -133,7 +133,7 @@ fill: #534741
 
 }
 
-#returnTop{
+#returnTop {
    /* display: block !important;  Gives priority over all other display: types. */
     display: none;
     cursor: pointer;
@@ -187,6 +187,4 @@ fill: #534741
     bottom: 1rem;
         
     transform: translate(-50%, 95%);
-    
-
 }

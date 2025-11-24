@@ -11,11 +11,11 @@
     padding: 1rem 0;
     width: fit-content;
     margin: 0 auto;
+    margin-top: -1.5em;
 }
 .info .icon{
    width:.9rem;
 }
-
 
 .info{
     font-size: 1rem;
@@ -24,25 +24,28 @@
     font-weight: 100;
 }
 
+.info strong{
+    font-weight: 700;
+    font-size: 2.5em;
+}
+
 /* Main Page Content */
 .main-container {
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2wo equal-width columns */
     gap: 2rem; /* Space between grid items */
-    padding: 5rem 0 25rem;
+    padding: 2.5rem 0 25rem;
 
     background-color:transparent;
     margin: 0 auto;
+    margin-top: 0%;
     width: max-content;
-    
+
 }
-@media (max-width: 960px) {
-    .main-container {
-        grid-template-columns: 1fr; 
-    }
-/* Main Project Rectangles */
-.project-contain{
+
+/* Main Project Containers */
+.project-contain {
     display: flex;
     flex-direction: column;
     max-width: fit-content;
@@ -52,26 +55,36 @@
 
 .project-rectangle {
     background-color: #fffdde;
-    
+
     --height: 10rem; /* Maintain website screenshot aspect ratio*/
-    
+
     height: var(--height);
     width: calc(var(--height) * 1.7332624867);
 
     margin: auto;
     display: flex;
-    
+
     flex-direction: column;
     align-items: center;
     text-align: center;
     border-radius: 8px;
-    
+
     border: solid #000 1rem;
-    
+
     position: inherit;
-        overflow: scroll; /* Causes the website to look like it's being scrolled down. */
+    overflow: scroll; /* Causes the website to look like it's being scrolled down. */
+}
 
+.project-pic {
+    width: 100%;
+    height: max-content;
+    border-radius: 8px;
+}
 
+@media (max-width: 960px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 .project-rectangle.left{
