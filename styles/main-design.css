@@ -6,7 +6,7 @@ html,body { /* Normalizes & removes default margins*/
 
 /* Background Color */
 body {
-    background: linear-gradient(#fff8e1 99%, #000);
+    background: linear-gradient(#fff8e1 95%, #726357 5% );
 }
 
 /* Main Content Box */
