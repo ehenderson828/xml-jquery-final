@@ -47,19 +47,19 @@
 }
 
 .circle.blue {
-    background-image: url("../assets/images/wolf.jpeg");
+    background-image: url("../assets/images/eric-avatar.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
 .circle.orange {
-    background-image: url("../assets/images/eagle.png");
+    background-image: url("../assets/images/ines-avatar.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
 .circle.red {
-    background-image: url("../assets/images/Cat.jpeg");
+    background-image: url("../assets/images/niko-avatar.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
