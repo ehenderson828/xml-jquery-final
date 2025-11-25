@@ -44,6 +44,12 @@
 
 }
 
+@media (max-width: 720px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Main Project Containers */
 .project-contain {
     display: flex;
@@ -52,7 +58,6 @@
     background-color: transparent;
     flex: 1;
 }
-
 .project-rectangle {
     background-color: #fffdde;
 
