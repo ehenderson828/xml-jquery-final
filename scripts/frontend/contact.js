@@ -1,37 +1,12 @@
-// Logic runs after document has loaded
+// CONTACT PAGE LOGIC
 $(document).ready(function() {
 
-  // MISC PAGE LOGIC:::
-  // Log message once document loads
-  console.log( "Ready!" );
-
-  // Hide and fade in body on reload - on each page
-  $('body').hide().fadeIn(500);
-  
-  // Cache the button element
-  var returnToTop = $("#returnTop");
-  // Scroll event
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 20) { // If user scrolls down 20 pixels from the top of the page...
-      returnToTop.fadeIn();  // Fade div in
-    } 
-    else {
-      returnToTop.fadeOut(); // Fade div out if present
-    }
-  });
-
-  // Click event to scroll to the top
-  returnToTop.click(function() {
-    $("html, body").animate({ scrollTop: 0 }, "medium"); // Scroll to top (other options: "fast" and "slow".)
-  });
-
-  // CONTACT PAGE LOGIC:::
   // Error handling on PHP email confirmation - will change url params to inform send-email.php
   var urlParams = new URLSearchParams(window.location.search);
   // Check for success/error messages in URL
   if (urlParams.has('success')) {
     showMessage('Success! Your message has been sent.', 'success');
-  } 
+  }
   else if (urlParams.has('error')) {
     var errorMsg = urlParams.get('error');
     showMessage(errorMsg || 'An error occurred. Please try again.', 'error');
@@ -155,7 +130,7 @@ $(document).ready(function() {
       },
       phone: {
         required: true,
-        phoneUS: true  
+        phoneUS: true
       },
       email: {
         required: true,
