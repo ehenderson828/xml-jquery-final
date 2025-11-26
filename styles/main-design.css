@@ -192,3 +192,16 @@ fill: #534741
     
 
 }
+
+.circle-icon{
+    overflow: hidden;
+    display: none;
+}
+.circle img{
+    width: 150px;
+    height: auto;
+    position: relative;
+
+;
+
+}
