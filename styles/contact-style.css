@@ -104,7 +104,12 @@
     justify-content: center;
     gap: 0.75em;
 }
-
+.inês-circle {
+    background-image: url("../assets/images/ines-avatar.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 /* Form Styling */
 #contact_form, .author-selection {
     background-color: #fff;

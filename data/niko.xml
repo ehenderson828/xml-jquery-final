@@ -5,16 +5,17 @@
    CMT-117 & CMT-225
 
    XML & jQuery Final Project
-   Date: December 8, 2025
+   Author: Níko Ferdinand
+   Date:
 
    Filename:           niko.xml
    Supporting Files:   niko.xsd, niko.xsl
 -->
 <nikosProjects
-
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="schema/niko.xsd"
 >
+
   <nikosProject>
      <Title>Persuasio</Title>
 	 <Description>A website showcasing how to gain confidence and talk to people.</Description>
@@ -24,11 +25,11 @@
   </nikosProject>
 
   <nikosProject>
-     <Title>Web Development Program Pathway</Title>
-	 <Description>A website teaching students of a particular college how to best achieve their goal of gaining an Associate's in Web Development.</Description>
-     <TimeToComplete>18 days</TimeToComplete>
+     <Title>Pee</Title>
+	 <Description>A. Spacebuns.</Description>
+     <TimeToComplete>8 days</TimeToComplete>
 	 <DatePublished>May 2025</DatePublished>
-	 <Link>https://www.webdevpathway.io</Link>
+	 <Link>https://wwww.pee</Link>
   </nikosProject>
   
   <nikosProject>
@@ -44,7 +45,7 @@
 	 <Description>A look into the minds of famous Stoic and Epicurean philosophers.</Description>
      <TimeToComplete>4 days</TimeToComplete>
 	 <DatePublished>January 2025</DatePublished>
-	 <Link>https://www.stoicquotes.ph</Link>
+	 <Link>https://www.Wstoicism.ca</Link>
   </nikosProject>
 
 

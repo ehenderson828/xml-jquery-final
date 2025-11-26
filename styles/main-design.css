@@ -6,7 +6,7 @@ html,body { /* Normalizes & removes default margins*/
 
 /* Background Color */
 body {
-    background: linear-gradient(#fff8e1 95%, #726357 5% );
+    background: linear-gradient(#fff8e1 99%, #000);
 }
 
 /* Main Content Box */
@@ -44,7 +44,6 @@ body {
     text-align: center;
     padding: .8rem 0 .8rem;
     overflow: hidden;
-    
 }
 
 #nav ul {
@@ -150,7 +149,7 @@ fill: #534741
 
     position: relative;
     top: 5rem;
-    z-index: 9;
+    z-index: 9999;
 
     background-color: transparent;
 }

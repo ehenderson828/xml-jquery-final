@@ -8,42 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Load Composer's autoloader
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// Load configuration: Try environment variables first (production),
-// fall back to email-config.php (local development)
-function getConfig() {
-    // Check if environment variables are set (Railway production)
-    if (getenv('SMTP_HOST')) {
-        return [
-            'author_emails' => [
-                'eric' => getenv('AUTHOR_EMAIL_ERIC') ?: 'eric.henderson@bhcc.edu',
-                'inês' => getenv('AUTHOR_EMAIL_INES') ?: 'ineves@bhcc.edu',
-                'níko' => getenv('AUTHOR_EMAIL_NIKO') ?: 'niko.ferdinand@bhcc.edu'
-            ],
-            'smtp' => [
-                'host' => getenv('SMTP_HOST'),
-                'port' => getenv('SMTP_PORT') ?: 587,
-                'encryption' => getenv('SMTP_ENCRYPTION') ?: 'tls',
-                'username' => getenv('SMTP_USERNAME'),
-                'password' => getenv('SMTP_PASSWORD'),
-                'from_email' => getenv('SMTP_FROM_EMAIL') ?: 'noreply@erinik.com',
-                'from_name' => getenv('SMTP_FROM_NAME') ?: 'Eriník Contact Form'
-            ],
-            'settings' => [
-                'debug' => getenv('DEBUG_MODE') === 'true',
-                'charset' => 'UTF-8'
-            ]
-        ];
-    }
-
-    // Fall back to email-config.php (local development)
-    $configFile = __DIR__ . '/email-config.php';
-    if (!file_exists($configFile)) {
-        die('Error: Configuration not found. Set environment variables or create email-config.php');
-    }
-    return require $configFile;
+// Load email configuration
+$configFile = __DIR__ . '/email-config.php';
+if (!file_exists($configFile)) {
+    die('Error: email-config.php not found. Please copy email-config.example.php to email-config.php and configure it.');
 }
-
-$config = getConfig();
+$config = require $configFile;
 
 // Import PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
@@ -69,8 +39,7 @@ if (empty($fullName)) {
 
 if (empty($email)) {
     $errors[] = 'Email is required';
-} 
-elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errors[] = 'Invalid email format';
 }
 
@@ -87,11 +56,10 @@ if (!empty($errors)) {
 
 // Prepare email details
 $toEmail = $config['author_emails'][$author];
-// Capitalize the author first name
 $authorName = ucfirst($author);
 $subject = "New Contact Form Submission for $authorName";
 
-// Create email body
+// Create email body (HTML version)
 $emailBodyHTML = "
 <html>
 <head>
@@ -112,7 +80,7 @@ $emailBodyHTML = "
         </div>
         <div class='content'>
             <p>Hello $authorName,</p>
-            <p>You have received a new contact form submission:</p>
+            <p>You have received a new contact form submission.</p>
 
             <div class='field'>
                 <span class='label'>Name:</span><br>
@@ -142,7 +110,7 @@ $emailBodyHTML = "
 </html>
 ";
 
-// Create plain text version if unable to configure html
+// Create plain text version
 $emailBodyText = "New Contact Form Submission for $authorName\n\n";
 $emailBodyText .= "Details:\n";
 $emailBodyText .= "--------\n";
@@ -159,7 +127,7 @@ $mail = new PHPMailer(true);
 try {
     // Server settings
     if ($config['settings']['debug']) {
-        $mail->SMTPDebug = 2; // Enable verbose debug output for local testing
+        $mail->SMTPDebug = 2; // Enable verbose debug output
     }
 
     $mail->isSMTP();
@@ -188,8 +156,7 @@ try {
     // Success - redirect back with success message
     header('Location: ../pages/contact.html?success=1');
 
-} 
-catch (Exception $e) {
+} catch (Exception $e) {
     // Failed - redirect back with error
     $errorMsg = $config['settings']['debug']
         ? "Failed to send email: {$mail->ErrorInfo}"
