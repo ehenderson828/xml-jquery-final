@@ -1,42 +1,42 @@
-.work-contain{
-
-    
-
-    position: relative;
-
-    width: 15rem;
-
-    text-align: center;
-
-    margin: 0 auto;
-
-    padding: 0 5vw ;
-
-    overflow: hidden;
-
+.work-contain {
+  position: relative;
+  width: 15rem;
+  margin: 0 auto;
+  margin-top: 1.75em;
+  padding: 0 5vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5em;
 }
 
-.works{
-    position: relative;
-    padding: 0 5vh;
-    background-color: #c7b29944;
-      
+.works {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+  background-color: #c7b29944;
+  border: solid 2px #6c0a0a;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
 }
 
 .work-contain a {
-        width: 100%;
-
-        color: #534741;
-        text-decoration: none;
-        font-weight: 800;
-        
-        transition: color 3s ease-in-out;
+  width: 100%;
+  color: #534741;
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 3s ease-in-out;
 }
 
 .work-contain a:hover{
-        color: #6c0a0a;
-        text-decoration: none;
-        transition: color .3s ease-in-out;
+  color: #6c0a0a;
+  text-decoration: none;
+  transition: color .3s ease-in-out;
 
 }
 /* XSLT Styling For Each */

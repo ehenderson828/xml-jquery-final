@@ -8,3 +8,9 @@ scripts/email-config.php
 # System files
 .DS_Store
 Thumbs.db
+
+# Debugging screenshots
+/screenshots/
+
+# Eric's about text file
+eric-about.txt
