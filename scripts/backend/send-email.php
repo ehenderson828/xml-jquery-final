@@ -1,12 +1,12 @@
 <?php
 // Prevent direct access
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ../pages/contact.html');
+    header('Location: ../../pages/contact.html');
     exit;
 }
 
 // Load Composer's autoloader
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 // Load configuration: Try environment variables first (production),
 // fall back to email-config.php (local development)
@@ -81,7 +81,7 @@ if (empty($message)) {
 // If there are errors, redirect back with error message
 if (!empty($errors)) {
     $errorMessage = urlencode(implode(', ', $errors));
-    header("Location: ../pages/contact.html?error=$errorMessage");
+    header("Location: ../../pages/contact.html?error=$errorMessage");
     exit;
 }
 
@@ -186,7 +186,7 @@ try {
     $mail->send();
 
     // Success - redirect back with success message
-    header('Location: ../pages/contact.html?success=1');
+    header('Location: ../../pages/contact.html?success=1');
 
 } 
 catch (Exception $e) {
@@ -195,7 +195,7 @@ catch (Exception $e) {
         ? "Failed to send email: {$mail->ErrorInfo}"
         : 'Failed to send email. Please try again later.';
 
-    header('Location: ../pages/contact.html?error=' . urlencode($errorMsg));
+    header('Location: ../../pages/contact.html?error=' . urlencode($errorMsg));
 }
 
 exit;
