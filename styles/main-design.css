@@ -1,18 +1,26 @@
+* {
+    box-sizing: border-box; 
+}
 html,body { /* Normalizes & removes default margins*/
     margin:0;
     padding:0;
+    min-height: 100%;
     overflow-x: hidden;
+    overflow-y: visible;
 }
-
 
 /* Background Color */
 body {
-    background: linear-gradient(#fff8e1 98%, #000);
+    background: linear-gradient(#fff8e1 98%, #000 2%);
+    display:flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 /* Main Content Box */
 .page-content{
     flex:1;
+    width: 100%;
     overflow: hidden;
     min-height: 100vh;
     min-width: 100vw;
@@ -20,14 +28,10 @@ body {
 }
 
 .main-container{
-    overflow: hidden;
-    position: absolute;
-
-    max-height: 100vh;
-    max-width: 100vw;
-
-    min-height: fit-content;
-    min-width: fit-content;
+    overflow: visible;
+    position: relative;
+    width: 100%;
+max-width: 100vw;
 }
 
 /* Default size for all .svg icons*/
@@ -44,8 +48,8 @@ body {
     height:fit-content;
     text-align: center;
     padding: .8rem 0 .8rem;
-    overflow: hidden;
-    
+    overflow: visible;
+    z-index: 999;
 }
 
 #nav ul {
@@ -59,7 +63,7 @@ body {
     margin: 0.925rem;
 }
 
-#nav ul :not(:first-child) {
+#nav > ul > li:not(:first-child) {
     background-color: #fff8e1 !important;
     padding: .5rem .7rem .5rem .7rem; /*left is last, take it from the top*/
     transition: 
@@ -69,7 +73,7 @@ body {
         0.15s ease-in-out .1s;
 
 }
-#nav ul :not(:first-child):hover {
+#nav > ul > li:not(:first-child):hover {
     background-color: #c7b299;
     padding: .5rem .9rem .5rem .9rem; /*left is last, take it from the top*/
     transition: all .2s ease-in-out;
@@ -95,6 +99,86 @@ body {
     font-size: 1rem;
     letter-spacing: .01rem;
     padding: .8rem 1.6rem;
+}
+
+/* Dropdown Stuff */
+.dropdown {
+    position: relative;
+}
+
+/* The visible menu item (“work”) */
+.dropButton {
+    background: none;
+    border: none;
+    color: #000;
+    font-size: 1rem;
+    padding: 0 1.6rem;
+    cursor: pointer;
+    font-family: inherit;
+    
+}
+
+/* Hidden dropdown by default */
+.dropdown-content {
+    position: absolute;
+    left: -10px;
+    top: 100%;
+    margin-top: .4rem;
+
+    background-color: #fff8e1;
+    min-width: 8rem;
+    padding: 0;
+    flex-direction: column;
+
+    z-index: 9999;
+    border-radius: 3px;
+
+/* TRANSITION */
+    display: flex;
+    visibility: hidden; /* initially hidden */
+    opacity: 0; /* and invisible */
+
+    /* Add a quick transition for appearance */
+    transition: 
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out;
+    transition-delay: .5s, .5s; /* prevents annoying pixel miss */
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: flex !important;
+    visibility: visible ;
+    opacity: 1;
+
+    transition-delay: 0s, 0s;
+
+transition: 
+
+        opacity .025s ease-in-out,
+
+        visibility .025s ease-in-out;
+}
+
+/* Dropdown list items */
+.dropdown-content li {
+    list-style: none;
+    margin: 0;
+    display: block;
+}
+
+/* Dropdown links */
+.dropdown-content li a {
+    display: block;
+    padding: .25rem .1rem;
+    color: #000;
+    text-decoration: none;
+    transition: background-color .2s ease-in-out;
+}
+
+/* Hover effect */
+.dropdown-content li a:hover {
+    background-color: #c7b299;
 }
 
 /* Default fallback font for body*/
@@ -130,8 +214,8 @@ fill: #534741
     padding-top:5rem;
     position: relative;
     bottom: 0;
-    background-color: transparent;
-    width: 100vw;
+    margin: auto 0;
+    width: 100%;
 
 }
 
@@ -189,4 +273,18 @@ fill: #534741
     bottom: 1rem;
         
     transform: translate(-50%, 95%);
+    
+
 }
+
+.circle-icon{
+    overflow: hidden;
+    display: none;
+}
+.circle img{
+    width: 150px;
+    height: auto;
+    position: relative;
+
+}
+
