@@ -219,7 +219,7 @@ fill: #534741
 
 }
 
-#returnTop{
+#returnTop {
    /* display: block !important;  Gives priority over all other display: types. */
     display: none;
     cursor: pointer;
