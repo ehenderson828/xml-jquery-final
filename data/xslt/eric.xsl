@@ -11,7 +11,7 @@ indent="yes"/> <!-- causes a nice indent -->
 
 <html>
 <head>
-<title>Níko's Work</title>
+<title>Eric's Work</title>
 <link href="../styles/collect.css" rel="stylesheet" type="text/css" />
 </head>
    <body style="font-family: 'Arial';">
