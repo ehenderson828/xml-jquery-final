@@ -5,12 +5,30 @@
 
    XML & jQuery Final Project
    Author: Eric Henderson
-   Date: 11/3/25 
+   Date: 12/8/25
 
    Filename:          eric.xsd
    Supporting Files:  eric.xml
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="ericsProjects">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ericsProject" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Title" type="xs:string"/>
+              <xs:element name="Description" type="xs:string"/>
+              <xs:element name="TimeToComplete" type="xs:string"/>
+              <xs:element name="DatePublished" type="xs:string"/>
+              <xs:element name="Link" type="xs:anyURI"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 
 </xs:schema>
