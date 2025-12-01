@@ -6,7 +6,7 @@
 
    XML & jQuery Final Project
    Author: Eric Henderson
-   Date: 
+   Date: December 8, 2025 
 
    Filename:           eric.xml
    Supporting Files:   eric.xsd, eric.xsl
@@ -17,27 +17,36 @@
 	xsi:noNamespaceSchemaLocation="schema/eric.xsd"
 >
   <ericsProject>
-     <Title>Project Title</Title>
-	 <Description>A website description.</Description>
-     <TimeToComplete>X weeks</TimeToComplete>
-	 <DatePublished>XXXX 2025</DatePublished>
-	 <Link>https://www.example.com</Link>
+     <Title>Erics48</Title>
+	  <Description>
+      Erics48 is a web based hiking app that allows hikers working towards their NH 48 4,000 footers list to document and share their experience hiking each mountain.
+     </Description>
+     <TimeToComplete>2 months</TimeToComplete>
+	  <DatePublished>May 2024</DatePublished>
+	  <Link>
+      https://erics48.vercel.app/register
+     </Link>
   </ericsProject>
-
   <ericsProject>
-     <Title>Project Title</Title>
-	 <Description>A website description.</Description>
-     <TimeToComplete>X weeks</TimeToComplete>
-	 <DatePublished>XXXX 2025</DatePublished>
-	 <Link>https://www.example.com</Link>
+     <Title>Bonsai Sensor Dashboard</Title>
+	  <Description>
+      My Bonsai Sensor Data project is a dashboard that renders daily temperature, humidity and atmospheric pressure for my collection of bonsai trees.
+     </Description>
+     <TimeToComplete>1 month</TimeToComplete>
+	  <DatePublished>September 2025</DatePublished>
+	  <Link>
+      https://erics-bonsai-dashboard.vercel.app/
+     </Link>
   </ericsProject>
-
   <ericsProject>
-     <Title>Project Title</Title>
-	 <Description>A website description.</Description>
-     <TimeToComplete>X weeks</TimeToComplete>
-	 <DatePublished>XXXX 2025</DatePublished>
-	 <Link>https://www.example.com</Link>
+     <Title>Brosco Weather Dashboard</Title>
+	  <Description>
+      Up to date weather data dashboard being rendered in Brosco employee break rooms in both the Portland, Maine and Westfield, Massachusetts. 
+     </Description>
+     <TimeToComplete>2 weeks</TimeToComplete>
+	  <DatePublished>June 2024</DatePublished>
+	  <Link>
+      https://vue-weather-zeta.vercel.app/
+     </Link>
   </ericsProject>
-
 </ericsProjects>
