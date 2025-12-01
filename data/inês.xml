@@ -17,27 +17,27 @@
 	xsi:noNamespaceSchemaLocation="schema/inês.xsd"
 >
   <inessProject>
-     <Title>Project Title</Title>
-	 <Description>A website description.</Description>
-     <TimeToComplete>X weeks</TimeToComplete>
-	 <DatePublished>XXXX 2025</DatePublished>
-	 <Link>https://www.example.com</Link>
+     <Title>Best Burguer</Title>
+	 <Description>Online Burguer Store</Description>
+     <TimeToComplete>3-4 days</TimeToComplete>
+	 <DatePublished>May 2025</DatePublished>
+	 <Link>https://www.bestbueguer.com</Link>
   </inessProject>
 
   <inessProject>
-     <Title>Project Title</Title>
-	 <Description>A website description.</Description>
-     <TimeToComplete>X weeks</TimeToComplete>
-	 <DatePublished>XXXX 2025</DatePublished>
-	 <Link>https://www.example.com</Link>
+     <Title>Clone Starbucks website</Title>
+	 <Description>A website Clone</Description>
+     <TimeToComplete>2 days</TimeToComplete>
+	 <DatePublished>June 2025</DatePublished>
+	 <Link>https://692a6a100540b60a961259c2--illustrious-lily-139383.netlify.app/</Link>
   </inessProject>
 
   <inessProject>
-     <Title>Project Title</Title>
-	 <Description>A website description.</Description>
-     <TimeToComplete>X weeks</TimeToComplete>
-	 <DatePublished>XXXX 2025</DatePublished>
-	 <Link>https://www.example.com</Link>
+     <Title>Modal</Title>
+	 <Description>A Modal template</Description>
+     <TimeToComplete>3 days</TimeToComplete>
+	 <DatePublished>August 2025</DatePublished>
+	 <Link>https://www.modaltemplate.com</Link>
   </inessProject>
 
 </inessProjects>
