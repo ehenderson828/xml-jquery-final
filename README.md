@@ -8,9 +8,9 @@ This is a shared portfolio site built as part of a web development course projec
 
 ## Team Members
 
-- **Níko** - Web Development Projects
-- **Inês Neves** - Frontend Development
-- **Eric Henderson** - Full-Stack Development
+- **Níko** - Frontend Development
+- **Inês** - Frontend Development
+- **Eric** - Full-Stack Development
 
 ## Features
 
