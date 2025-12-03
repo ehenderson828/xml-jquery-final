@@ -109,10 +109,10 @@
 }
 
 .project-rectangle.left{
-    background-color:#ff4422;
+    background-color:#000;
 }
 .project-rectangle.right{
-    background-color:#ff8822;
+    background-color:#000;
 }
 
 /* Image styles */
@@ -135,6 +135,8 @@
     overflow-x: hidden;
     overflow-y: auto; /* Just in case the text is too large for any reason. We can also change this to hidden.*/
 
+    font-size: clamp(10px, 2vw, 5px);
+    
     border-radius: 0;
 
     background-color: #000;
@@ -179,4 +181,13 @@
     font-weight: 600;
     position: relative;
     bottom: .65rem;
+}
+
+
+@media (min-width: 961px) {
+
+    .project-contain{
+        padding-top: 15px;
+        scale: 150%;
+    }
 }

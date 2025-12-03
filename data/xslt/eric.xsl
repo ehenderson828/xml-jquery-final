@@ -15,6 +15,8 @@ indent="yes"/> <!-- causes a nice indent -->
 <link href="../styles/collect.css" rel="stylesheet" type="text/css" />
 </head>
    <body style="font-family: 'Arial';">
+   <img src="../assets/images/eric-avatar.png" alt="Eric's Wolf Avatar"
+             style="width: 120px; height: 120px; object-fit:cover; border-radius: 100%; display: block; margin: 20px auto 10px;" />
        <div id="nav">
            <ul>
                <li>
