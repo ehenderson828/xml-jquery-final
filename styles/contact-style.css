@@ -90,7 +90,7 @@
 .circle-icon {
     width: 100px;
     height: 100px;
-    border: dashed #000 1px;
+    border: solid #000 1px;
     border-radius: 100%;
     background-color: #FFFFFF;
     display: flex;

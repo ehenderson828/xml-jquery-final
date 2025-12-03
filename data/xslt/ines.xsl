@@ -12,7 +12,7 @@ indent="yes"/> <!-- causes a nice indent -->
 <html>
 <head>
 <title>Inês's Work</title>
-<link href="../styles/works-style.css" rel="stylesheet" type="text/css" />
+<link href="../styles/collect.css" rel="stylesheet" type="text/css" />
 </head>
 
    <body style="font-family: 'Arial';">
