@@ -67,9 +67,11 @@ body {
     height: fit-content;
     text-align: center;
     padding: 0.8rem 0;
+    padding-bottom: 0;
     margin: 0;
-    overflow-x: hidden;
+    overflow: visible;
     z-index: 999;
+    position: relative;
 }
 
 #nav ul {
@@ -77,8 +79,10 @@ body {
     display: flex;
     justify-content: center;
     padding: 0.625rem 0;
+    padding-bottom: 0.8rem;
     margin: 0;
     width: 100%;
+    overflow: visible;
 }
 
 #nav li {
@@ -124,8 +128,9 @@ body {
 }
 
 /* Dropdown Stuff */
-.dropdown {
+#nav .dropdown {
     position: relative;
+    overflow: visible;
 }
 
 /* The visible menu item ("work") */
@@ -141,7 +146,7 @@ body {
 }
 
 /* Hidden dropdown by default */
-.dropdown-content {
+#nav .dropdown-content {
     position: absolute;
     left: -10px;
     top: 100%;
@@ -149,11 +154,13 @@ body {
 
     background-color: #fff8e1;
     min-width: 8rem;
-    padding: 0;
+    padding: 0.5rem 0;
     flex-direction: column;
+    list-style: none;
 
     z-index: 9999;
     border-radius: 3px;
+    overflow: visible;
 
 /* TRANSITION */
     display: flex;
@@ -168,38 +175,39 @@ body {
 }
 
 /* Show dropdown on hover */
-.dropdown:hover .dropdown-content {
+#nav .dropdown:hover .dropdown-content {
     display: flex !important;
-    visibility: visible ;
+    visibility: visible;
     opacity: 1;
-
     transition-delay: 0s, 0s;
-
-transition:
-
-        opacity .025s ease-in-out,
-
-        visibility .025s ease-in-out;
+    transition: opacity .025s ease-in-out, visibility .025s ease-in-out;
 }
 
 /* Dropdown list items */
-.dropdown-content li {
+#nav .dropdown-content li {
     list-style: none;
     margin: 0;
     display: block;
+    width: 100%;
 }
 
 /* Dropdown links */
-.dropdown-content li a {
+#nav .dropdown-content li a {
     display: block;
-    padding: .25rem .1rem;
-    color: #000;
+    padding: .5rem 1rem;
+    color: #000 !important;
     text-decoration: none;
+    font-size: 1rem !important;
+    line-height: 1.5;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
     transition: background-color .2s ease-in-out;
 }
 
 /* Hover effect */
-.dropdown-content li a:hover {
+#nav .dropdown-content li a:hover {
     background-color: #c7b299;
 }
 
