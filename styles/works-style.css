@@ -39,6 +39,41 @@
   transition: color .3s ease-in-out;
 
 }
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .work-contain {
+    width: 100%;
+    max-width: 20rem;
+    padding: 0 2rem;
+    margin: 1.5em auto 0 auto;
+    align-items: center;
+  }
+
+  .works {
+    width: 100%;
+    padding: 1em 1.5em;
+    text-align: center;
+  }
+
+  .work-contain a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-contain {
+    max-width: 100%;
+    padding: 0 1rem;
+    gap: 2em;
+    margin-bottom: 0;
+  }
+
+  .works {
+    padding: 0.8em 1em;
+    font-size: 0.95rem;
+  }
+}
+
 /* XSLT Styling For Each */
   table {
     width: 100%;
