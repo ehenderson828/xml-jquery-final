@@ -156,6 +156,11 @@ $emailBodyText .= "This message was sent from the Eriník contact form.";
 // Create PHPMailer instance
 $mail = new PHPMailer(true);
 
+// Start timing for performance measurement
+$startTime = microtime(true);
+$timings = [];
+$timings['start'] = 0;
+
 try {
     // Server settings
     if ($config['settings']['debug']) {
@@ -171,6 +176,9 @@ try {
     $mail->Port       = $config['smtp']['port'];
     $mail->CharSet    = $config['settings']['charset'];
 
+    // Timing checkpoint: SMTP configured
+    $timings['smtp_configured'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
+
     // Recipients
     $mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
     $mail->addAddress($toEmail, $authorName);
@@ -185,11 +193,43 @@ try {
     // Send email
     $mail->send();
 
+    // Timing checkpoint: Email sent
+    $timings['email_sent'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
+    $timings['total'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
+
+    // Log the timings for performance analysis
+    error_log("Email Send Performance Timings: " . json_encode($timings));
+
+    // Also log to a dedicated file for easier tracking
+    $logFile = __DIR__ . '/../../logs/email-timing.log';
+    $logDir = dirname($logFile);
+    if (!file_exists($logDir)) {
+        mkdir($logDir, 0755, true);
+    }
+    $logEntry = date('Y-m-d H:i:s') . " | SUCCESS | " . json_encode($timings) . "\n";
+    file_put_contents($logFile, $logEntry, FILE_APPEND);
+
     // Success - redirect back with success message
     header('Location: ../../pages/contact.html?success=1');
 
-} 
+}
 catch (Exception $e) {
+    // Timing checkpoint: Error occurred
+    $timings['error_occurred'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
+    $timings['total'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
+
+    // Log the timings and error
+    error_log("Email Send Failed - Timings: " . json_encode($timings) . " | Error: " . $mail->ErrorInfo);
+
+    // Also log to dedicated file
+    $logFile = __DIR__ . '/../../logs/email-timing.log';
+    $logDir = dirname($logFile);
+    if (!file_exists($logDir)) {
+        mkdir($logDir, 0755, true);
+    }
+    $logEntry = date('Y-m-d H:i:s') . " | ERROR | " . json_encode($timings) . " | " . $mail->ErrorInfo . "\n";
+    file_put_contents($logFile, $logEntry, FILE_APPEND);
+
     // Failed - redirect back with error
     $errorMsg = $config['settings']['debug']
         ? "Failed to send email: {$mail->ErrorInfo}"

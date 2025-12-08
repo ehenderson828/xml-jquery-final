@@ -14,3 +14,6 @@ Thumbs.db
 
 # Eric's about text file
 eric-about.txt
+
+# Email timing logs
+logs/

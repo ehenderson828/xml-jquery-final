@@ -42,6 +42,85 @@ $(document).ready(function() {
     });
   }
 
+  // Show loading indicator during form submission
+  function showLoadingIndicator() {
+    // Create loading overlay with same style as modal backdrop
+    var loadingOverlay = $('<div></div>')
+      .attr('id', 'loading-overlay')
+      .css({
+        'position': 'fixed',
+        'top': '0',
+        'left': '0',
+        'width': '100%',
+        'height': '100%',
+        'background-color': 'rgba(0, 0, 0, 0.6)',
+        'backdrop-filter': 'blur(3px)',
+        'z-index': 10000,
+        'display': 'flex',
+        'align-items': 'center',
+        'justify-content': 'center',
+        'animation': 'fadeIn 0.3s ease-out'
+      });
+
+    // Create loading content box (matching fieldset style)
+    var loadingBox = $('<div></div>')
+      .css({
+        'background-color': '#fff8e1',
+        'border': '2px solid #c7b299',
+        'border-radius': '8px',
+        'padding': '2.5rem',
+        'text-align': 'center',
+        'box-shadow': '0 10px 30px rgba(0, 0, 0, 0.3)',
+        'animation': 'modalSlideIn 0.3s ease-out',
+        'min-width': '300px'
+      });
+
+    // Create spinner (using brand colors)
+    var spinner = $('<div></div>')
+      .css({
+        'border': '4px solid #c7b299',
+        'border-top': '4px solid #534741',
+        'border-radius': '50%',
+        'width': '60px',
+        'height': '60px',
+        'animation': 'spin 1s linear infinite',
+        'margin': '0 auto 1.5rem'
+      });
+
+    // Create loading text
+    var loadingText = $('<p></p>')
+      .text('Sending your message...')
+      .css({
+        'color': '#534741',
+        'font-family': "'Arial Narrow', Arial, sans-serif",
+        'font-size': '1.3rem',
+        'font-weight': 'bold',
+        'margin': '0'
+      });
+
+    // Add spinner animation keyframes if not already added
+    if (!$('#spinner-animation').length) {
+      $('<style>')
+        .attr('id', 'spinner-animation')
+        .text(`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+        `)
+        .appendTo('head');
+    }
+
+    // Assemble and append to body
+    loadingBox.append(spinner).append(loadingText);
+    loadingOverlay.append(loadingBox);
+    $('body').append(loadingOverlay);
+  }
+
   // CSS effects for data filter divs - author selection:
   // Add hover effects to each contact div
   $('div[data-filter]').hover(
@@ -176,6 +255,9 @@ $(document).ready(function() {
       $(element).removeClass('error').addClass('valid');
     },
     submitHandler: function(form) {
+      // Show loading indicator
+      showLoadingIndicator();
+
       // Form is valid, submit it
       form.submit();
     }
