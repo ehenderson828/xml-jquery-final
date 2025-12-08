@@ -264,6 +264,17 @@ textarea:focus.error {
 
 /* Media Query */
 @media (max-width: 768px) {
+    /* Stack contact divs vertically on tablets and smaller */
+    .author-selection {
+        flex-direction: column;
+        gap: 2em;
+        padding: 2rem 1rem;
+    }
+
+    .contact-container {
+        padding: 1rem;
+    }
+
     #contact_form {
         padding: 1.5rem;
     }
@@ -300,6 +311,28 @@ textarea:focus.error {
 }
 
 @media (max-width: 480px) {
+    /* Further adjust stacking on mobile */
+    .author-selection {
+        gap: 1.5em;
+        padding: 1.5rem 0.5rem;
+    }
+
+    .contact-container {
+        padding: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .eric-contact h1,
+    .inês-contact h1,
+    .níko-contact h1 {
+        font-size: 1.5rem;
+    }
+
+    .circle-icon {
+        width: 80px;
+        height: 80px;
+    }
+
     .main-container {
         padding: 1rem;
     }
