@@ -134,13 +134,13 @@ p {
 .nav-hamburger {
     display: none;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 5px;
     width: 30px;
-    height: 24px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 10px 7px;
     z-index: 1001;
     position: absolute;
     left: 1.5rem;
@@ -152,13 +152,12 @@ p {
 
 .nav-hamburger span {
     display: block;
-    width: 100%;
+    width: 30px;
     height: 3px;
     background: #fff8e1;
     border-radius: 2px;
     transition: all 0.3s ease;
     position: relative;
-    margin: 0;
 }
 
 .nav-hamburger:hover span {
@@ -453,7 +452,6 @@ fill: #534741
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
-    height: 25px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -467,6 +465,7 @@ fill: #534741
 }
 
 .footer-hamburger span {
+    display: block;
     width: 30px;
     height: 3px;
     background: #fff8e1;
