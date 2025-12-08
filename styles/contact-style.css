@@ -96,6 +96,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .icon-container {
@@ -310,6 +312,17 @@ textarea:focus.error {
     }
 }
 
+@media (max-width: 640px) {
+    .circle-icon {
+        width: 90px;
+        height: 90px;
+    }
+
+    .author-selection {
+        gap: 1.75em;
+    }
+}
+
 @media (max-width: 480px) {
     /* Further adjust stacking on mobile */
     .author-selection {
@@ -380,6 +393,7 @@ textarea:focus.error {
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     animation: modalSlideIn 0.3s ease-out;
+    padding: 1rem;
 }
 
 @keyframes modalSlideIn {
@@ -426,4 +440,6 @@ textarea:focus.error {
 .modal-container #contact_form {
     border: none;
     box-shadow: none;
+    margin: 0 auto;
+    display: block;
 }

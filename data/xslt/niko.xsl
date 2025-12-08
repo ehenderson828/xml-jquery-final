@@ -13,6 +13,7 @@ indent="yes"/> <!-- causes a nice indent -->
        <title>Níko's Work</title>
            <!-- External Stylesheet -->
        <link href="../styles/collect.css" rel="stylesheet" type="text/css" />
+       <link href="../styles/xslt-style.css" rel="stylesheet" type="text/css" />
    </head>
     <body style="font-family: 'Arial';">
     <img src="../assets/images/niko-avatar.png" alt="Níko's Cat Avatar"
@@ -74,8 +75,6 @@ indent="yes"/> <!-- causes a nice indent -->
         </tr>
       </xsl:for-each>
     </table>
-    <!-- External JS >
-    <script type="text/javascript" src="../scripts/dropdown.js"></script-->
     </body>
     </html>
 

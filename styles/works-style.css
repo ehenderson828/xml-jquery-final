@@ -60,6 +60,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .work-contain {
+    width: 100%;
+    max-width: 20rem;
+    padding: 0 2rem;
+    margin: 1.5em auto 0 auto;
+    align-items: center;
+  }
+}
+
 @media (max-width: 480px) {
   .work-contain {
     max-width: 100%;
@@ -72,39 +82,27 @@
     padding: 0.8em 1em;
     font-size: 0.95rem;
   }
-}
 
-/* XSLT Styling For Each */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  /* Default Table Header Styling */
-  th {
-    color: #ffffff;
-    text-align: left;
-    padding: 0.8rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 1px transparent;
-  }
-
-  /* Table Data Styling */
-  td {
-    text-align: center;
-    padding: 0.8rem;
-    border-bottom: 1px solid #ddd;
-  }
-
-  /* Last Row Border Styling */
-  tr:last-child td {
-    border-bottom: none;
-  }
-
-  /* Add some space around the table */
+  /* Adjust padding for XSLT pages on mobile */
   body {
-    margin: 20px;
+    padding: 1rem;
   }
+
+  body > * {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  table {
+    width: 100% !important;
+    min-width: 500px;
+    margin: 0.75rem 0;
+    font-size: 0.9rem;
+  }
+
+  /* Adjust button on mobile */
+  a[href*="works.html"] {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

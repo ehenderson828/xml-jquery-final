@@ -1,0 +1,70 @@
+/* XSLT Styling For XML Pages */
+body {
+  padding: 1.5rem;
+  box-sizing: border-box;
+  margin: 20px;
+}
+
+/* Add padding to all direct children of body for XSLT pages */
+body > * {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+/* Table wrapper for horizontal scrolling */
+table {
+  width: 100% !important;
+  min-width: 600px;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0;
+  display: block;
+  overflow-x: auto;
+}
+
+/* Back to Works button styling */
+a[href*="works.html"] {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #6c0a0a;
+  color: #fff8e1;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+a[href*="works.html"]:hover {
+  background-color: #8b0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+a[href*="works.html"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Default Table Header Styling */
+th {
+  color: #ffffff;
+  text-align: left;
+  padding: 0.8rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px transparent;
+}
+
+/* Table Data Styling */
+td {
+  text-align: center;
+  padding: 0.8rem;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Last Row Border Styling */
+tr:last-child td {
+  border-bottom: none;
+}

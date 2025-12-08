@@ -65,6 +65,24 @@ body {
     overflow-x: hidden !important;
     padding: 0 !important;
     margin: 0 !important;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
+h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+}
+
+p {
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    line-height: 1.6;
 }
 
 /* Main Content Box */
@@ -122,12 +140,14 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 10px;
     z-index: 1001;
     position: absolute;
     left: 1.5rem;
     top: 50%;
     transform: translateY(-50%);
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .nav-hamburger span {
@@ -312,13 +332,12 @@ body {
 
 #banner h1 {
     font-weight: bold;
-    width: 12rem;
+    width: clamp(10rem, 30vw, 15rem);
     text-align: center;
     height: min-content;
     fill: #000;
     text-transform: uppercase;
     margin: 0 auto;
-
     transition: fill 22s ease-in-out;
 }
 
@@ -438,11 +457,13 @@ fill: #534741
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
+    padding: 10px;
     z-index: 11;
     position: absolute;
     right: 2rem;
     bottom: 10vw;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .footer-hamburger span {
@@ -548,6 +569,22 @@ fill: #534741
     }
 }
 
+@media (max-width: 640px) {
+    /* Intermediate breakpoint for landscape phones */
+    #banner {
+        padding: 0.75rem 0;
+    }
+
+    #nav {
+        padding: 0.6rem 0;
+    }
+
+    .footer-nav-link {
+        font-size: 1rem;
+        padding: 0.7rem 1rem;
+    }
+}
+
 @media (max-width: 480px) {
     /* Further adjust "Back to top" for mobile */
     #returnTop {
@@ -583,8 +620,16 @@ fill: #534741
     #nav {
         padding: 1rem 0;
         min-height: 60px;
+    }
+
+    /* Ensure nav links meet touch target minimum */
+    #nav a,
+    #nav button {
+        min-height: 44px;
         display: flex;
         align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
     }
 
     /* Show hamburger menu on tablets and smaller */

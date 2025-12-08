@@ -13,6 +13,7 @@ indent="yes"/> <!-- causes a nice indent -->
 <head>
 <title>Eric's Work</title>
 <link href="../styles/collect.css" rel="stylesheet" type="text/css" />
+<link href="../styles/xslt-style.css" rel="stylesheet" type="text/css" />
 </head>
    <body style="font-family: 'Arial';">
    <img src="../assets/images/eric-avatar.png" alt="Eric's Wolf Avatar"
