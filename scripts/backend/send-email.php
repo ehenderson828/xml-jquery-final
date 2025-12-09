@@ -45,6 +45,12 @@ function getConfig() {
 
 $config = getConfig();
 
+// Log configuration source for debugging
+error_log("Email config loaded. Using env vars: " . (getenv('SMTP_HOST') ? 'YES' : 'NO'));
+if (getenv('SMTP_HOST')) {
+    error_log("SMTP Config: Host=" . getenv('SMTP_HOST') . " Port=" . ($config['smtp']['port']) . " User=" . getenv('SMTP_USERNAME'));
+}
+
 // Import PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -175,6 +181,11 @@ try {
     $mail->SMTPSecure = $config['smtp']['encryption'];
     $mail->Port       = $config['smtp']['port'];
     $mail->CharSet    = $config['settings']['charset'];
+
+    // Set timeout values to fail faster and provide better error messages
+    $mail->Timeout    = 10; // Connection timeout (default 300)
+    $mail->SMTPAutoTLS = true; // Automatically enable TLS if available
+    $mail->SMTPKeepAlive = false; // Close connection after each email
 
     // Timing checkpoint: SMTP configured
     $timings['smtp_configured'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
