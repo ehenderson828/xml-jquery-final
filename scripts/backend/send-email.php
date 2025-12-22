@@ -12,21 +12,17 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 // fall back to email-config.php (local development)
 function getConfig() {
     // Check if environment variables are set (Railway production)
-    if (getenv('SMTP_HOST')) {
+    if (getenv('RESEND_API_KEY')) {
         return [
             'author_emails' => [
                 'eric' => getenv('AUTHOR_EMAIL_ERIC') ?: 'eric.henderson@bhcc.edu',
                 'inês' => getenv('AUTHOR_EMAIL_INES') ?: 'ineves@bhcc.edu',
                 'níko' => getenv('AUTHOR_EMAIL_NIKO') ?: 'niko.ferdinand@bhcc.edu'
             ],
-            'smtp' => [
-                'host' => getenv('SMTP_HOST'),
-                'port' => getenv('SMTP_PORT') ?: 587,
-                'encryption' => getenv('SMTP_ENCRYPTION') ?: 'tls',
-                'username' => getenv('SMTP_USERNAME'),
-                'password' => getenv('SMTP_PASSWORD'),
-                'from_email' => getenv('SMTP_FROM_EMAIL') ?: 'noreply@erinik.com',
-                'from_name' => getenv('SMTP_FROM_NAME') ?: 'Eriník Contact Form'
+            'resend' => [
+                'api_key' => getenv('RESEND_API_KEY'),
+                'from_email' => getenv('RESEND_FROM_EMAIL') ?: 'noreply@erinik.com',
+                'from_name' => getenv('RESEND_FROM_NAME') ?: 'Eriník Contact Form'
             ],
             'settings' => [
                 'debug' => getenv('DEBUG_MODE') === 'true',
@@ -38,7 +34,7 @@ function getConfig() {
     // Fall back to email-config.php (local development)
     $configFile = __DIR__ . '/email-config.php';
     if (!file_exists($configFile)) {
-        die('Error: Configuration not found. Set environment variables or create email-config.php');
+        die('Error: Configuration not found. Set RESEND_API_KEY environment variable or create email-config.php');
     }
     return require $configFile;
 }
@@ -46,14 +42,7 @@ function getConfig() {
 $config = getConfig();
 
 // Log configuration source for debugging
-error_log("Email config loaded. Using env vars: " . (getenv('SMTP_HOST') ? 'YES' : 'NO'));
-if (getenv('SMTP_HOST')) {
-    error_log("SMTP Config: Host=" . getenv('SMTP_HOST') . " Port=" . ($config['smtp']['port']) . " User=" . getenv('SMTP_USERNAME'));
-}
-
-// Import PHPMailer classes
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+error_log("Email config loaded. Using env vars: " . (getenv('RESEND_API_KEY') ? 'YES' : 'NO'));
 
 // Get form data and sanitize
 $author = isset($_POST['author']) ? trim($_POST['author']) : '';
@@ -97,6 +86,12 @@ $toEmail = $config['author_emails'][$author];
 $authorName = ucfirst($author);
 $subject = "New Contact Form Submission for $authorName";
 
+// Escape all user inputs to prevent XSS
+$fullName_safe = htmlspecialchars($fullName, ENT_QUOTES, 'UTF-8');
+$email_safe = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+$phone_safe = htmlspecialchars($phone, ENT_QUOTES, 'UTF-8');
+$message_safe = nl2br(htmlspecialchars($message, ENT_QUOTES, 'UTF-8'));
+
 // Create email body
 $emailBodyHTML = "
 <html>
@@ -122,22 +117,22 @@ $emailBodyHTML = "
 
             <div class='field'>
                 <span class='label'>Name:</span><br>
-                $fullName
+                $fullName_safe
             </div>
 
             <div class='field'>
                 <span class='label'>Email:</span><br>
-                <a href='mailto:$email'>$email</a>
+                <a href='mailto:$email_safe'>$email_safe</a>
             </div>
 
             <div class='field'>
                 <span class='label'>Phone:</span><br>
-                $phone
+                $phone_safe
             </div>
 
             <div class='field'>
                 <span class='label'>Message:</span><br>
-                " . nl2br(htmlspecialchars($message)) . "
+                $message_safe
             </div>
         </div>
         <div class='footer'>
@@ -148,7 +143,7 @@ $emailBodyHTML = "
 </html>
 ";
 
-// Create plain text version if unable to configure html
+// Create plain text version
 $emailBodyText = "New Contact Form Submission for $authorName\n\n";
 $emailBodyText .= "Details:\n";
 $emailBodyText .= "--------\n";
@@ -159,8 +154,8 @@ $emailBodyText .= "Message:\n$message\n";
 $emailBodyText .= "--------\n\n";
 $emailBodyText .= "This message was sent from the Eriník contact form.";
 
-// Create PHPMailer instance
-$mail = new PHPMailer(true);
+// Initialize Resend
+$resend = Resend::client($config['resend']['api_key']);
 
 // Start timing for performance measurement
 $startTime = microtime(true);
@@ -168,48 +163,25 @@ $timings = [];
 $timings['start'] = 0;
 
 try {
-    // Server settings
-    if ($config['settings']['debug']) {
-        $mail->SMTPDebug = 2; // Enable verbose debug output for local testing
-    }
+    // Timing checkpoint: API configured
+    $timings['api_configured'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
 
-    $mail->isSMTP();
-    $mail->Host       = $config['smtp']['host'];
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $config['smtp']['username'];
-    $mail->Password   = $config['smtp']['password'];
-    $mail->SMTPSecure = $config['smtp']['encryption'];
-    $mail->Port       = $config['smtp']['port'];
-    $mail->CharSet    = $config['settings']['charset'];
-
-    // Set timeout values to fail faster and provide better error messages
-    $mail->Timeout    = 10; // Connection timeout (default 300)
-    $mail->SMTPAutoTLS = true; // Automatically enable TLS if available
-    $mail->SMTPKeepAlive = false; // Close connection after each email
-
-    // Timing checkpoint: SMTP configured
-    $timings['smtp_configured'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
-
-    // Recipients
-    $mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
-    $mail->addAddress($toEmail, $authorName);
-    $mail->addReplyTo($email, $fullName);
-
-    // Content
-    $mail->isHTML(true);
-    $mail->Subject = $subject;
-    $mail->Body    = $emailBodyHTML;
-    $mail->AltBody = $emailBodyText;
-
-    // Send email
-    $mail->send();
+    // Send email via Resend
+    $result = $resend->emails->send([
+        'from' => $config['resend']['from_name'] . ' <' . $config['resend']['from_email'] . '>',
+        'to' => [$toEmail],
+        'reply_to' => $email,
+        'subject' => $subject,
+        'html' => $emailBodyHTML,
+        'text' => $emailBodyText
+    ]);
 
     // Timing checkpoint: Email sent
     $timings['email_sent'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
     $timings['total'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
 
     // Log the timings for performance analysis
-    error_log("Email Send Performance Timings: " . json_encode($timings));
+    error_log("Email Send Performance Timings: " . json_encode($timings) . " | Email ID: " . ($result->id ?? 'unknown'));
 
     // Also log to a dedicated file for easier tracking
     $logFile = __DIR__ . '/../../logs/email-timing.log';
@@ -217,7 +189,7 @@ try {
     if (!file_exists($logDir)) {
         mkdir($logDir, 0755, true);
     }
-    $logEntry = date('Y-m-d H:i:s') . " | SUCCESS | " . json_encode($timings) . "\n";
+    $logEntry = date('Y-m-d H:i:s') . " | SUCCESS | " . json_encode($timings) . " | Email ID: " . ($result->id ?? 'unknown') . "\n";
     file_put_contents($logFile, $logEntry, FILE_APPEND);
 
     // Success - redirect back with success message
@@ -230,7 +202,7 @@ catch (Exception $e) {
     $timings['total'] = round((microtime(true) - $startTime) * 1000, 2) . 'ms';
 
     // Log the timings and error
-    error_log("Email Send Failed - Timings: " . json_encode($timings) . " | Error: " . $mail->ErrorInfo);
+    error_log("Email Send Failed - Timings: " . json_encode($timings) . " | Error: " . $e->getMessage());
 
     // Also log to dedicated file
     $logFile = __DIR__ . '/../../logs/email-timing.log';
@@ -238,12 +210,12 @@ catch (Exception $e) {
     if (!file_exists($logDir)) {
         mkdir($logDir, 0755, true);
     }
-    $logEntry = date('Y-m-d H:i:s') . " | ERROR | " . json_encode($timings) . " | " . $mail->ErrorInfo . "\n";
+    $logEntry = date('Y-m-d H:i:s') . " | ERROR | " . json_encode($timings) . " | " . $e->getMessage() . "\n";
     file_put_contents($logFile, $logEntry, FILE_APPEND);
 
     // Failed - redirect back with error
     $errorMsg = $config['settings']['debug']
-        ? "Failed to send email: {$mail->ErrorInfo}"
+        ? "Failed to send email: " . $e->getMessage()
         : 'Failed to send email. Please try again later.';
 
     header('Location: ../../pages/contact.html?error=' . urlencode($errorMsg));

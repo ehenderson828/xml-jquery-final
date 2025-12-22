@@ -14,20 +14,16 @@ return [
         'níko' => 'niko@example.com'
     ],
 
-    // SMTP Configuration
-    'smtp' => [
-        'host' => 'smtp.gmail.com',           // SMTP server (e.g., smtp.gmail.com, smtp.office365.com)
-        'port' => 587,                         // SMTP port (587 for TLS, 465 for SSL)
-        'encryption' => 'tls',                 // Encryption: 'tls' or 'ssl'
-        'username' => 'your-email@gmail.com', // SMTP username
-        'password' => 'your-app-password',    // SMTP password or app password
-        'from_email' => 'noreply@erinik.com', // From email address
-        'from_name' => 'Eriník Contact Form'  // From name
+    // Resend API Configuration
+    'resend' => [
+        'api_key' => 'your-resend-api-key',      // Get from https://resend.com/api-keys
+        'from_email' => 'onboarding@resend.dev', // Use Resend's test domain or your verified domain
+        'from_name' => 'Eriník Contact Form'     // From name
     ],
 
     // Email settings
     'settings' => [
-        'debug' => false,  // Set to true for debugging (shows SMTP errors)
+        'debug' => false,  // Set to true for debugging
         'charset' => 'UTF-8'
     ]
 ];
