@@ -59,6 +59,13 @@ $config = getConfig();
 // Log configuration source for debugging
 error_log("Email config loaded. Using env vars: " . (getenv('RESEND_API_KEY') ? 'YES' : 'NO'));
 
+// DEBUG: Log ALL incoming data
+error_log("POST Data: " . json_encode($_POST));
+error_log("POST Keys: " . implode(', ', array_keys($_POST)));
+error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'NOT_SET'));
+error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
+error_log("Request URI: " . $_SERVER['REQUEST_URI']);
+
 // Validate CSRF token first
 $csrfToken = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
 
