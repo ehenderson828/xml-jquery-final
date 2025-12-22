@@ -8,6 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Load Composer's autoloader
 require_once __DIR__ . '/../../vendor/autoload.php';
 
+// Load rate limiter and CSRF protection
+require_once __DIR__ . '/rate-limiter.php';
+require_once __DIR__ . '/csrf-token.php';
+
 // Load configuration: Try environment variables first (production),
 // fall back to email-config.php (local development)
 function getConfig() {
@@ -44,6 +48,23 @@ $config = getConfig();
 // Log configuration source for debugging
 error_log("Email config loaded. Using env vars: " . (getenv('RESEND_API_KEY') ? 'YES' : 'NO'));
 
+// Validate CSRF token first
+$csrfToken = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
+if (!CSRFToken::validate($csrfToken)) {
+    error_log("CSRF validation failed - IP: " . RateLimiter::getClientIP());
+    header("Location: ../../pages/contact.html?error=" . urlencode('Security validation failed. Please refresh the page and try again.'));
+    exit;
+}
+
+// Check honeypot field (should be empty)
+$honeypot = isset($_POST['website']) ? trim($_POST['website']) : '';
+if (!empty($honeypot)) {
+    // Likely a bot - log and redirect with generic success message to avoid detection
+    error_log("Honeypot triggered - IP: " . RateLimiter::getClientIP() . ", Value: " . $honeypot);
+    header("Location: ../../pages/contact.html?success=1");
+    exit;
+}
+
 // Get form data and sanitize
 $author = isset($_POST['author']) ? trim($_POST['author']) : '';
 $fullName = isset($_POST['full_name']) ? trim($_POST['full_name']) : '';
@@ -79,6 +100,20 @@ if (!empty($errors)) {
     header("Location: ../../pages/contact.html?error=$errorMessage");
     exit;
 }
+
+// Check rate limiting
+$rateLimiter = new RateLimiter();
+$clientIP = RateLimiter::getClientIP();
+$rateCheck = $rateLimiter->checkRateLimit($clientIP, $email);
+
+if (!$rateCheck['allowed']) {
+    error_log("Rate limit exceeded - IP: $clientIP, Email: $email");
+    header("Location: ../../pages/contact.html?error=" . urlencode($rateCheck['reason']));
+    exit;
+}
+
+// Record this attempt for rate limiting
+$rateLimiter->recordAttempt($clientIP, $email);
 
 // Prepare email details
 $toEmail = $config['author_emails'][$author];

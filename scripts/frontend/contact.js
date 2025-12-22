@@ -140,6 +140,23 @@ $(document).ready(function() {
     }
   );
 
+  // Function to fetch CSRF token
+  function fetchCSRFToken() {
+    $.ajax({
+      url: '../scripts/backend/get-csrf-token.php',
+      method: 'GET',
+      dataType: 'json',
+      success: function(response) {
+        if (response.success && response.token) {
+          $('#csrf_token').val(response.token);
+        }
+      },
+      error: function() {
+        console.error('Failed to fetch CSRF token');
+      }
+    });
+  }
+
   // Data filtering for author selection:
   // Add event listeners to each contact div to filter author & open the corresponding modal
   $('div[data-filter]').each(function() {
@@ -155,6 +172,8 @@ $(document).ready(function() {
       $('#legend').text('Submit Contact Info for ' + authorName + ' Below ⬇');
       // Set the hidden author field value
       $('#author').val(filterType);
+      // Fetch fresh CSRF token when modal opens
+      fetchCSRFToken();
       // Show the modal
       $('#modal-backdrop').css('display', 'flex').hide().fadeIn();
     });

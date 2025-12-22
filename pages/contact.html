@@ -216,6 +216,15 @@
                             <!-- Hidden field to track selected author -->
                             <input type="hidden" name="author" id="author" value="">
 
+                            <!-- CSRF Token (populated by JavaScript) -->
+                            <input type="hidden" name="csrf_token" id="csrf_token" value="">
+
+                            <!-- Honeypot field (must remain empty - hidden from users, visible to bots) -->
+                            <div style="position: absolute; left: -9999px; opacity: 0; pointer-events: none;" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" name="website" id="website" value="" tabindex="-1" autocomplete="off">
+                            </div>
+
                             <fieldset id="fieldset_container">
                                 <legend id="legend">Submit Contact Info Below ⬇</legend>
                                 <br>
