@@ -166,8 +166,6 @@ $(document).ready(function() {
     $(this).on('click', function() {
       // Assign the value of the data filter to a variable
       const filterType = $(this).data('filter');
-      // Log the filterType to the console
-      console.log('Clicked on:', filterType);
       // Capitalize the first letter of filterType for interpolation and display
       const authorName = filterType.charAt(0).toUpperCase() + filterType.slice(1); // This line is necessary to change filterType (all lowercase) to a full capitalized name for interpolating into the legend text
       // Update the legend text with the author's name

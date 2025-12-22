@@ -3,7 +3,6 @@ $(document).ready(function() {
 
   // MISC PAGE LOGIC:
   // Log message once document loads
-  console.log( "Ready!" );
 
   // Hide and fade in body on reload - on each page
   $('body').hide().fadeIn(500);
@@ -103,6 +102,5 @@ $(document).ready(function() {
     script.src = pageModules[pageName];
     script.type = 'text/javascript';
     document.head.appendChild(script);
-    console.log('Loaded module:', pageModules[pageName]);
   }
 });
