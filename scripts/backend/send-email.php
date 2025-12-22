@@ -5,6 +5,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Configure session for Railway/production environments
+ini_set('session.cookie_samesite', 'Lax');
+ini_set('session.cookie_httponly', '1');
+ini_set('session.use_strict_mode', '1');
+
+// Use /tmp for sessions on Railway (writable directory)
+$sessionPath = sys_get_temp_dir();
+if (is_writable($sessionPath)) {
+    session_save_path($sessionPath);
+}
+
 // Load Composer's autoloader
 require_once __DIR__ . '/../../vendor/autoload.php';
 
