@@ -20,19 +20,9 @@ When deploying to Railway or Heroku, set these environment variables in the plat
 ### Required Variables
 
 ```
-SMTP_HOST=smtp.gmail.com
-SMTP_USERNAME=erinik.contact@gmail.com
-SMTP_PASSWORD=lylzvlpwegnicpot
-```
-
-### Optional Variables (with defaults)
-
-```
-SMTP_PORT=587
-SMTP_ENCRYPTION=tls
-SMTP_FROM_EMAIL=noreply@erinik.com
-SMTP_FROM_NAME=Eriník Contact Form
-DEBUG_MODE=false
+RESEND_API_KEY=your-resend-api-key
+RESEND_FROM_EMAIL=noreply@erinik.com
+RESEND_FROM_NAME=Eriník Contact Form
 ```
 
 ### Author Email Addresses (optional, defaults provided)
@@ -41,6 +31,12 @@ DEBUG_MODE=false
 AUTHOR_EMAIL_ERIC=eric.henderson@bhcc.edu
 AUTHOR_EMAIL_INES=ineves@bhcc.edu
 AUTHOR_EMAIL_NIKO=niko.ferdinand@bhcc.edu
+```
+
+### Optional Variables
+
+```
+DEBUG_MODE=false
 ```
 
 ---
@@ -131,11 +127,13 @@ The code automatically uses `email-config.php` when environment variables aren't
 
 ### "Configuration not found" error
 - Check that environment variables are set in the platform dashboard
-- Verify `SMTP_HOST` is set (this triggers env var mode)
+- Verify `RESEND_API_KEY` is set (this triggers env var mode)
 
 ### Emails not sending
-- Check platform logs for SMTP errors
-- Verify SMTP credentials are correct
+- Check platform logs for API errors
+- Verify your Resend API key is correct
+- Ensure your domain (erinik.com) is verified in Resend dashboard
+- Confirm `RESEND_FROM_EMAIL` uses your verified domain (e.g., noreply@erinik.com)
 - Try setting `DEBUG_MODE=true` temporarily to see detailed errors
 
 ### Composer dependencies not installing
@@ -163,4 +161,5 @@ The code automatically uses `email-config.php` when environment variables aren't
 
 - **Railway Docs:** [docs.railway.app](https://docs.railway.app)
 - **Heroku PHP Docs:** [devcenter.heroku.com/categories/php-support](https://devcenter.heroku.com/categories/php-support)
-- **PHPMailer:** [github.com/PHPMailer/PHPMailer](https://github.com/PHPMailer/PHPMailer)
+- **Resend Docs:** [resend.com/docs](https://resend.com/docs)
+- **Resend PHP SDK:** [github.com/resendlabs/resend-php](https://github.com/resendlabs/resend-php)
