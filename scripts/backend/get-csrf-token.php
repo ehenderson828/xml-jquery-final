@@ -6,9 +6,15 @@
  */
 
 // Configure session for Railway/production environments
-ini_set('session.cookie_samesite', 'Lax');
+ini_set('session.cookie_lifetime', '3600'); // 1 hour
+ini_set('session.cookie_path', '/');
+ini_set('session.cookie_domain', ''); // Empty = current domain
+ini_set('session.cookie_secure', '0'); // Allow non-HTTPS for now
 ini_set('session.cookie_httponly', '1');
+ini_set('session.cookie_samesite', 'Lax');
 ini_set('session.use_strict_mode', '1');
+ini_set('session.use_cookies', '1');
+ini_set('session.use_only_cookies', '1');
 
 // Use /tmp for sessions on Railway (writable directory)
 $sessionPath = sys_get_temp_dir();
