@@ -62,39 +62,14 @@ function getConfig() {
 
 $config = getConfig();
 
-// Log configuration source for debugging
-error_log("Email config loaded. Using env vars: " . (getenv('RESEND_API_KEY') ? 'YES' : 'NO'));
-
-// DEBUG: Log ALL incoming data
-error_log("POST Data: " . json_encode($_POST));
-error_log("POST Keys: " . implode(', ', array_keys($_POST)));
-error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'NOT_SET'));
-error_log("Request Method: " . $_SERVER['REQUEST_METHOD']);
-error_log("Request URI: " . $_SERVER['REQUEST_URI']);
-
 // Validate CSRF token first
 $csrfToken = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
 
-// Enhanced CSRF debugging
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-$sessionToken = isset($_SESSION['csrf_token']) ? $_SESSION['csrf_token'] : 'NOT_SET';
-$sessionTime = isset($_SESSION['csrf_token_time']) ? $_SESSION['csrf_token_time'] : 'NOT_SET';
-$currentTime = time();
-
-error_log("CSRF Debug - Received token: " . ($csrfToken ? substr($csrfToken, 0, 20) . '...' : 'EMPTY'));
-error_log("CSRF Debug - Session token: " . ($sessionToken !== 'NOT_SET' ? substr($sessionToken, 0, 20) . '...' : 'NOT_SET'));
-error_log("CSRF Debug - Session time: " . $sessionTime . " (current: $currentTime)");
-error_log("CSRF Debug - Session ID: " . session_id());
-
 if (!CSRFToken::validate($csrfToken)) {
-    error_log("CSRF validation failed - IP: " . RateLimiter::getClientIP() . " - Tokens match: " . ($csrfToken === $sessionToken ? 'YES' : 'NO'));
+    error_log("CSRF validation failed - IP: " . RateLimiter::getClientIP());
     header("Location: ../../pages/contact.html?error=" . urlencode('Security validation failed. Please refresh the page and try again.'));
     exit;
 }
-
-error_log("CSRF validation PASSED - IP: " . RateLimiter::getClientIP());
 
 // Check honeypot field (should be empty)
 $honeypot = isset($_POST['website']) ? trim($_POST['website']) : '';

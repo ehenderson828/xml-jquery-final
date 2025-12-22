@@ -1,4 +1,4 @@
-<?php
+'<?php
 /**
  * Router script for PHP built-in server on Railway
  *
