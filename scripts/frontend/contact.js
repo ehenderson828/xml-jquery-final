@@ -142,17 +142,25 @@ $(document).ready(function() {
 
   // Function to fetch CSRF token
   function fetchCSRFToken() {
+    console.log('🔐 Fetching CSRF token...');
     $.ajax({
       url: '../scripts/backend/get-csrf-token.php',
       method: 'GET',
       dataType: 'json',
       success: function(response) {
+        console.log('✅ CSRF token response:', response);
         if (response.success && response.token) {
           $('#csrf_token').val(response.token);
+          console.log('✅ CSRF token populated in form:', response.token.substring(0, 20) + '...');
+        } else {
+          console.error('❌ Invalid CSRF token response:', response);
         }
       },
-      error: function() {
-        console.error('Failed to fetch CSRF token');
+      error: function(xhr, status, error) {
+        console.error('❌ Failed to fetch CSRF token');
+        console.error('Status:', status);
+        console.error('Error:', error);
+        console.error('Response:', xhr.responseText);
       }
     });
   }
@@ -274,10 +282,29 @@ $(document).ready(function() {
       $(element).removeClass('error').addClass('valid');
     },
     submitHandler: function(form) {
+      // Log form data before submission
+      console.log('📤 Form submission started');
+      console.log('Form data:');
+      console.log('- Author:', $('#author').val());
+      console.log('- CSRF Token:', $('#csrf_token').val() ? $('#csrf_token').val().substring(0, 20) + '...' : 'MISSING!');
+      console.log('- Name:', $('#name').val());
+      console.log('- Email:', $('#email').val());
+      console.log('- Phone:', $('#phone').val());
+      console.log('- Message length:', $('#message').val().length);
+      console.log('- Honeypot:', $('#website').val() ? 'FILLED (bot detected)' : 'Empty (good)');
+
+      // Check if CSRF token exists
+      if (!$('#csrf_token').val()) {
+        console.error('❌ CRITICAL: CSRF token is missing!');
+        alert('Security error: CSRF token missing. Please refresh the page and try again.');
+        return false;
+      }
+
       // Show loading indicator
       showLoadingIndicator();
 
       // Form is valid, submit it
+      console.log('✅ Submitting form...');
       form.submit();
     }
   });
